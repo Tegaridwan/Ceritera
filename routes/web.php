@@ -3,8 +3,14 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChapterController;
 
 Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('posts.chapters', ChapterController::class)->middleware('auth');
+
+Route::get('/ceritamu', function () {
+    return view('posts.ceritamu');
+})->name('posts.ceritamu');
 
 Route::get('/', function () {
     return view('welcome');

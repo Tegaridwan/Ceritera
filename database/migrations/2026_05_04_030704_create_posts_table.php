@@ -16,6 +16,11 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('content');
+            $table->string('cover')->nullable();
+            $table->text('sinopsis');
+            $table->enum('genre', ['romance', 'action', 'comedy', 'horror', 'sci-fi', 'fantasy', 'mystery', 'thriller', 'drama', 'slice of life']);
+            $table->enum('status', ['publik', 'privat'])->default('privat');
+            $table->boolean('is_draft')->default(true);
             $table->timestamps();
         });
     }
