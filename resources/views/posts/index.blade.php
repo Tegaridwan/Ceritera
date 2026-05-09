@@ -4,6 +4,7 @@
 
 <div class="flex flex-col">
     <div class="p-6">
+        <!-- Header -->
         <div class="items-center mb-8">
             <div class="flex items-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-800">Selamat Datang,</h1>
@@ -13,31 +14,18 @@
                 <h1 class="text-xl font-bold text-gray-800">Rekomendasi untukmu</h1>
             </div>
         </div>
-    </div>
-</div>
-<!-- <h1>Data Posts</h1>
-     <div class="py-6">
-        <a href="/posts/create" class="text-blue-500">Tambah</a>
-
-        <div class="mt-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
             @foreach ($posts as $post)
-                <div class="p-4 mb-3 bg-white shadow rounded">
-                    <h3 class="font-bold">{{ $post->title }}</h3>
-                    <p>{{ $post->content }}</p>
 
-                    <div class="mt-2">
-                        <a href="/posts/{{ $post->id }}/edit" class="text-yellow-500">Edit</a>
-
-                        <form action="/posts/{{ $post->id }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500">
-                                Hapus
-                            </button>
-                        </form>
-                    </div>
+            <a href="/posts/{{ $post->id }}" class="group block">
+                <div class="w-full h-64 bg-gray-200 rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('images/' . $post->cover) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
+                <h2 class="mt-4 text-lg font-semibold text-gray-800 group-hover:text-[#3a8fba] transition-colors duration-200">{{ $post->title }}</h2>
+                <p class="text-sm text-gray-500">{{ $post->user->name }}</p>
+            </a>
             @endforeach
         </div>
-    </div> -->
+    </div>
+</div>
 @endsection
