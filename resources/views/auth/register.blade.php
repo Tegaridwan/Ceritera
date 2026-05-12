@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-[#dbe9f9] flex flex-col">
+<body class="min-h-screen bg-gradient-to-b from-[#C4B5FD] from-[16%] to-[#DDD6FE] to-[92%] bg-fixed bg-no-repeat flex flex-col">
     <!-- <nav class="bg-white shadow-sm px-8 py-5">
         <a href="#" class="text-2xl text-[#3a6fc4]">Ceritera</a>
     </nav> -->
@@ -49,10 +49,10 @@
                     @enderror
                 </div>
                 <div class="mt-5">
-                    <button type="submit" class="w-full bg-[#3a6fc4] hover:bg-[#2f5aa8] text-white font-semibold py-2 rounded-lg transition duration-200">Create Account</button>
+                    <button type="submit" class="w-full bg-[#402988] hover:bg-[#321f6a] text-white font-semibold py-2 rounded-lg transition duration-200">Create Account</button>
                 </div>
                 <div class="mt-4 text-center">
-                    <p class="text-sm text-gray-600">Already have an account? <a href="{{ route('login') }}" class="text-[#3a6fc4] hover:underline">Login here</a></p>
+                    <p class="text-sm text-gray-600">Already have an account? <a href="{{ route('login') }}" class="text-[#402988] hover:underline">Login here</a></p>
                 </div>
 
             </form>

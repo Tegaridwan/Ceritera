@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="h-full">
+<html lang="id">
 <head>
     <title>App</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#a0c8e0] h-full flex flex-col">
+<body class="min-h-screen bg-gradient-to-b from-[#C4B5FD] from-[16%] to-[#DDD6FE] to-[92%] bg-fixed bg-no-repeat flex flex-col">
 
 @include('layouts.navigation')
 

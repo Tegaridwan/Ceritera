@@ -15,7 +15,6 @@ return new class extends Migration
             $table->enum('role', ['admin', 'author'])->default('author')->after('email');
         });
     }
-
     /**
      * Reverse the migrations.
      */

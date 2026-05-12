@@ -28,10 +28,10 @@
   </style>
 </head>
 
-<body class="bg-[#b8cdd8] min-h-screen">
+<body class="bg-gradient-to-b from-[#C4B5FD] from-[16%] to-[#DDD6FE] to-[92%] min-h-screen bg-fixed bg-no-repeat">
 
   <!-- TOPBAR -->
-  <div class="bg-[#1b2e3e] px-5 py-4 flex items-center gap-3 shadow-md">
+  <div class="bg-[#402988] px-5 py-4 flex items-center gap-3 shadow-md">
 
     <span
       onclick="window.location.href='{{ route('posts.index') }}';"
@@ -56,15 +56,15 @@
       <span class="text-[28px]">✍️</span>
 
       <h1 class="text-[28px] font-bold text-[#1b2e3e]">
-        <span class="text-[#3a8fba]">Tambah</span> Cerita Baru
+        <span class="text-[#402988]">Tambah Cerita Baru
       </h1>
 
     </div>
 
     <!-- INFORMASI CERITA -->
-    <div class="bg-[#1e3448] rounded-2xl p-6 mb-5 shadow-lg">
+    <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
 
-      <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
+      <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
         Informasi Cerita
       </div>
 
@@ -73,7 +73,7 @@
         <!-- COVER -->
         <div
           id="cover-box"
-          class="w-[140px] h-[180px] rounded-xl bg-[#2a4a65] border-2 border-dashed border-[#3d6f90] flex flex-col items-center justify-center cursor-pointer flex-shrink-0 relative overflow-hidden transition-all duration-200 hover:border-[#5aabd0] hover:bg-[#2d5070]">
+          class="w-[140px] h-[180px] rounded-xl bg-white border-2 border-dashed border-[#3d6f90] flex flex-col items-center justify-center cursor-pointer flex-shrink-0 relative overflow-hidden transition-all duration-200 hover:border-[#5aabd0] hover:bg-[#2d5070]">
 
           <input
             type="file"
@@ -94,7 +94,7 @@
 
           <div
             id="cover-text"
-            class="text-[11px] text-[#5a8aaa] text-center leading-[1.6]">
+            class="text-[11px] text-black text-center leading-[1.6]">
             Upload<br>Cover
           </div>
 
@@ -105,7 +105,7 @@
 
           <div>
 
-            <label class="block text-[13px] font-semibold text-[#6a9ab4] mb-2">
+            <label class="block text-[13px] font-semibold text-black mb-2">
               Judul Cerita
             </label>
 
@@ -113,21 +113,21 @@
               id="judul"
               type="text"
               placeholder="Judul yang menarik..."
-              class="w-full bg-[#243f57] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-[#cce4f0] outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
+              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
             >
 
           </div>
 
           <div>
 
-            <label class="block text-[13px] font-semibold text-[#6a9ab4] mb-2">
+            <label class="block text-[13px] font-semibold text-black mb-2">
               Tagline
             </label>
 
             <input
               type="text"
               placeholder="Satu kalimat yang menggugah rasa ingin tahu"
-              class="w-full bg-[#243f57] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-[#cce4f0] outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
+              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
             >
 
           </div>
@@ -139,9 +139,9 @@
     </div>
 
     <!-- SINOPSIS -->
-    <div class="bg-[#1e3448] rounded-2xl p-6 mb-5 shadow-lg">
+    <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
 
-      <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
+      <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
         Sinopsis
       </div>
 
@@ -149,77 +149,77 @@
         id="sinopsis"
         oninput="updateChar()"
         placeholder="Ceritakan gambaran singkat kisahmu... Buat pembaca penasaran!"
-        class="w-full min-h-[180px] leading-[1.8] bg-[#243f57] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-[#cce4f0] outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
+        class="w-full min-h-[180px] leading-[1.8] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
       ></textarea>
 
-      <div class="text-[12px] text-[#3d6880] text-right mt-2">
+      <div class="text-[12px] text-black text-right mt-2">
         <span id="char-count">0</span> / 500 karakter
       </div>
 
     </div>
 
     <!-- GENRE -->
-    <div class="bg-[#1e3448] rounded-2xl p-6 mb-5 shadow-lg">
+    <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
 
-      <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
-        Genre
+      <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
+      Genre
       </div>
 
       <div class="flex flex-wrap gap-3">
 
-        <button onclick="toggleGenre(this)"
-          class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#3a8fba] bg-[#3a8fba] text-white transition-all duration-200">
-          Romance
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
+        Romance
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:border-[#5aabd0] hover:text-[#a0d0e8]">
-          Horor
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+        Horor
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#3a8fba] bg-[#3a8fba] text-white transition-all duration-200">
-          Fantasi
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
+        Fantasi
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:border-[#5aabd0] hover:text-[#a0d0e8]">
-          Misteri
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+        Misteri
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:border-[#5aabd0] hover:text-[#a0d0e8]">
-          Komedi
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+        Komedi
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:border-[#5aabd0] hover:text-[#a0d0e8]">
-          Aksi
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+        Aksi
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:border-[#5aabd0] hover:text-[#a0d0e8]">
-          Drama
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+        Drama
+      </button>
 
-        <button onclick="toggleGenre(this)"
-          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:border-[#5aabd0] hover:text-[#a0d0e8]">
-          Thriller
-        </button>
+      <button onclick="toggleGenre(this)"
+        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+        Thriller
+      </button>
 
       </div>
 
     </div>
 
     <!-- PENGATURAN -->
-    <div class="bg-[#1e3448] rounded-2xl p-6 mb-5 shadow-lg">
+    <!-- <div class="bg-[#402988] rounded-2xl p-6 mb-5 shadow-lg"> -->
 
-      <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
+      <!-- <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
         Pengaturan
       </div>
 
       <!-- STATUS -->
-      <div class="flex items-center justify-between py-4 border-b border-white/5 gap-4">
+      <!-- <div class="flex items-center justify-between py-4 border-b border-white/5 gap-4">
 
         <div>
 
@@ -240,10 +240,10 @@
           Publik
         </button>
 
-      </div>
+      </div> -->
 
       <!-- USIA -->
-      <div class="flex items-center justify-between py-4 gap-4">
+      <!-- <div class="flex items-center justify-between py-4 gap-4"> -->
 
         <!-- <div>
 
@@ -265,12 +265,12 @@
 
         </select> -->
 
-      </div>
+      <!-- </div>
 
-    </div>
+    </div> -->
 
     <!-- EPISODE -->
-    <div class="bg-[#1e3448] rounded-2xl p-6 mb-5 shadow-lg">
+    <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
 
       <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
 
@@ -305,7 +305,7 @@
 
         <div class="flex flex-col gap-2">
 
-          <label class="text-[13px] font-semibold text-[#6a9ab4]">
+          <label class="text-[13px] font-semibold text-black">
             Isi Cerita
           </label>
 
@@ -315,7 +315,7 @@
             placeholder="Mulai tulis ceritamu di sini...
 
 Gunakan paragraf yang jelas dan menarik untuk pembaca."
-            class="w-full min-h-[260px] bg-[#243f57] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-[#cce4f0] outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
+            class="w-full min-h-[260px] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
           ></textarea>
 
         </div>
@@ -329,13 +329,13 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
 
       <button
         onclick="toast('📝 Tersimpan sebagai draft!')"
-        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#243f57] border border-[#355a75] text-[#6a9ab4] transition-all duration-200 hover:bg-[#2d5070] hover:text-[#a0d0e8]">
+        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#9E7AE2] border border-[#355a75] text-white transition-all duration-200 hover:bg-[#7c6ac9] hover:border-[#7c6ac9]">
         Simpan Draft
       </button>
 
       <button
         onclick="doPublish()"
-        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#2a6a9a] text-white transition-all duration-200 hover:bg-[#3a8fba]">
+        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#402988] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
         Publikasi Sekarang
       </button>
 
@@ -346,7 +346,7 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
   <!-- TOAST -->
   <div
     id="toast"
-    class="fixed bottom-[30px] left-1/2 -translate-x-1/2 translate-y-[80px] bg-[#1b2e3e] border border-[#3a8fba] text-[#cce4f0] text-[15px] px-7 py-4 rounded-full transition-transform duration-300 z-[999] whitespace-nowrap shadow-xl">
+    class="fixed bottom-[30px] left-1/2 -translate-x-1/2 translate-y-[80px] bg-[#9E7AE2] border border-[#3a8fba] text-[#cce4f0] text-[15px] px-7 py-4 rounded-full transition-transform duration-300 z-[999] whitespace-nowrap shadow-xl">
     ✅ Berhasil!
   </div>
 

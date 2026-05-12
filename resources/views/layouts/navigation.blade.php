@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class=" bg-[#1b2e3e] p-4 shadow">
+<nav x-data="{ open: false }" class=" bg-[#402988] p-4 shadow">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -22,7 +22,7 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
                 <!-- Search Box -->
                 <div class="relative">
-                    <input type="text" placeholder="Cari..." class="rounded-full bg-[#111e29] border-none text-[#cce4f0] placeholder-[#7a9bb0] focus:ring-2 focus:ring-[#cce4f0] px-4 py-2 text-sm w-48 lg:w-64 transition-all">
+                    <input type="text" placeholder="Cari..." class="rounded-full bg-white border-none text-black placeholder-[#7a9bb0] focus:ring-2 focus:ring-[#cce4f0] px-4 py-2 text-sm w-48 lg:w-64 transition-all">
                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                         <svg class="w-4 h-4 text-[#7a9bb0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -33,7 +33,7 @@
                 <!-- Tulis Ceritamu Button -->
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-bold rounded-full text-[#1b2e3e] bg-[#cce4f0] hover:bg-white focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-bold rounded-full text-[#1b2e3e] bg-white hover:bg-white focus:outline-none transition ease-in-out duration-150">
                             <span>Tulis Cerita</span>
                             <svg class="fill-current h-4 w-4 ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -60,7 +60,7 @@
                 <!-- Settings Dropdown -->
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-bold rounded-full text-[#1b2e3e] bg-[#cce4f0] hover:bg-white focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-bold rounded-full text-[#1b2e3e] bg-white hover:bg-white focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
