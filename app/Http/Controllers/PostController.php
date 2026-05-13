@@ -17,6 +17,12 @@ class PostController extends Controller
         // $posts = Post::where('user_id', Auth::id())->get();
         return view('posts.index', compact('posts'));
     }
+    
+    public function myPosts()
+    {
+        $posts = Post::where('user_id', Auth::id())->latest()->get();
+        return view('posts.ceritamu', compact('posts'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -73,15 +79,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        if ($post->user_id !== Auth::id()) {
-            abort(403);
-        }
-        $post->update($request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-        ]));
+        // if ($post->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        // $post->update($request->validate([
+        //     'title' => 'required|string|max:255',
+        //     'content' => 'required|string',
+        // ]));
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
+        // return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
 
     /**
@@ -89,10 +95,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->user_id !== Auth::id()) {
-            abort(403);
-        }
-        $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+        // if ($post->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        // $post->delete();
+        // return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 }

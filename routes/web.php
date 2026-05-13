@@ -8,13 +8,17 @@ use App\Http\Controllers\ChapterController;
 Route::resource('posts', PostController::class)->middleware('auth');
 Route::resource('posts.chapters', ChapterController::class)->middleware('auth');
 
-Route::get('/ceritamu', function () {
-    return view('posts.ceritamu');
-})->name('posts.ceritamu');
+Route::get('/ceritamu', [PostController::class, 'myPosts'])->name('posts.ceritamu');
 
 Route::get('/', function () {
     return redirect()->route('posts.index');
 });
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+
 
 Route::get('/dashboard', [PostController::class, 'index'])
     ->middleware(['auth'])

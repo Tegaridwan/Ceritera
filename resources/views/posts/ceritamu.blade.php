@@ -28,22 +28,38 @@
         <!-- ICON -->
         <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-[#C4B5FD] flex items-center justify-center">
 
-        <button onclick="window.location.href='{{ route('posts.create') }}';" class="w-full h-full flex items-center justify-center rounded-full hover:bg-[#402988] transition-colors duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.8"
-                stroke="currentColor"
-                class="w-10 h-10 text-[#402988]">
-                <path stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-         </button>
-        </button>
+            <button onclick="window.location.href='{{ route('posts.create') }}';" class="w-full h-full flex items-center justify-center rounded-full hover:bg-[#402988] transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.8"
+                    stroke="currentColor"
+                    class="w-10 h-10 text-[#402988]">
+                    <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </button>
+            </button>
         </div>
         <h2 class="text-3xl font-bold text-gray-800 mb-3">
             Tambah Cerita Baru
         </h2>
+    </div>
+    <div class="mx-12 mt-8 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4">
+
+        @foreach ($posts as $post)
+
+        <a href="/posts/{{ $post->id }}/edit" class="group block">
+            <div class="aspect-[2/3] overflow-hidden rounded-lg bg-gray-200 shadow-sm">
+                <img src="{{ asset('images/' . $post->cover) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="mt-2">
+                <h2 class="text-sm font-semibold text-gray-800 line-clamp-2 leading-snug group-hover:text-[#8B5CF6] transition">{{ $post->title }}</h2>
+                <p class="mt-1 text-xs text-gray-500 truncate">{{ $post->user->name }}</p>
+            </div>
+
+        </a>
+        @endforeach
     </div>
 </body>
 

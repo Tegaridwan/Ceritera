@@ -12,12 +12,12 @@
     @yield('content')
 </div>
 
-<footer class="bg-[#1b2e3e] p-4 border-t border-gray-200 w-full mt-auto">
+<footer class="bg-[#402988] p-4 border-t border-gray-200 w-full mt-auto">
     <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center">
             <a href="#" class="text-[#cce4f0] text-xl font-bold">Ceritera</a>
         </div>
-        <div class="text-gray-600 px-4 py-2">
+        <div class="text-white px-4 py-2">
             &copy; 2026 Ceritera. All rights reserved.
         </div>
     </div>

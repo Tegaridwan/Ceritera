@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,14 +80,12 @@
             type="file"
             accept="image/*"
             onchange="previewCover(event)"
-            class="absolute inset-0 opacity-0 cursor-pointer"
-          >
+            class="absolute inset-0 opacity-0 cursor-pointer">
 
           <img
             id="cover-preview"
             class="w-full h-full object-cover hidden"
-            alt="cover"
-          >
+            alt="cover">
 
           <div id="cover-icon" class="text-[38px] mb-2">
             🖼️
@@ -113,8 +112,7 @@
               id="judul"
               type="text"
               placeholder="Judul yang menarik..."
-              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
-            >
+              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]">
 
           </div>
 
@@ -127,8 +125,7 @@
             <input
               type="text"
               placeholder="Satu kalimat yang menggugah rasa ingin tahu"
-              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
-            >
+              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]">
 
           </div>
 
@@ -149,8 +146,7 @@
         id="sinopsis"
         oninput="updateChar()"
         placeholder="Ceritakan gambaran singkat kisahmu... Buat pembaca penasaran!"
-        class="w-full min-h-[180px] leading-[1.8] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
-      ></textarea>
+        class="w-full min-h-[180px] leading-[1.8] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"></textarea>
 
       <div class="text-[12px] text-black text-right mt-2">
         <span id="char-count">0</span> / 500 karakter
@@ -162,50 +158,50 @@
     <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
 
       <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
-      Genre
+        Genre
       </div>
 
       <div class="flex flex-wrap gap-3">
 
-      <button onclick="toggleGenre(this)"
-        class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
-        Romance
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
+          Romance
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
-        Horor
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+          Horor
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
-        Fantasi
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
+          Fantasi
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
-        Misteri
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+          Misteri
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
-        Komedi
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+          Komedi
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
-        Aksi
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+          Aksi
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
-        Drama
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+          Drama
+        </button>
 
-      <button onclick="toggleGenre(this)"
-        class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
-        Thriller
-      </button>
+        <button onclick="toggleGenre(this)"
+          class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
+          Thriller
+        </button>
 
       </div>
 
@@ -214,12 +210,12 @@
     <!-- PENGATURAN -->
     <!-- <div class="bg-[#402988] rounded-2xl p-6 mb-5 shadow-lg"> -->
 
-      <!-- <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
+    <!-- <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
         Pengaturan
       </div>
 
       <!-- STATUS -->
-      <!-- <div class="flex items-center justify-between py-4 border-b border-white/5 gap-4">
+    <!-- <div class="flex items-center justify-between py-4 border-b border-white/5 gap-4">
 
         <div>
 
@@ -242,10 +238,10 @@
 
       </div> -->
 
-      <!-- USIA -->
-      <!-- <div class="flex items-center justify-between py-4 gap-4"> -->
+    <!-- USIA -->
+    <!-- <div class="flex items-center justify-between py-4 gap-4"> -->
 
-        <!-- <div>
+    <!-- <div>
 
           <div class="text-[16px] font-medium text-[#cce4f0] mb-1">
             Kategori Usia
@@ -257,7 +253,7 @@
 
         </div> -->
 
-        <!-- <select
+    <!-- <select
           class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] bg-[#243f57] text-[#6a9ab4] outline-none text-center cursor-pointer">
 
           <option value="all">Semua Umur</option>
@@ -265,7 +261,7 @@
 
         </select> -->
 
-      <!-- </div>
+    <!-- </div>
 
     </div> -->
 
@@ -315,8 +311,7 @@
             placeholder="Mulai tulis ceritamu di sini...
 
 Gunakan paragraf yang jelas dan menarik untuk pembaca."
-            class="w-full min-h-[260px] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
-          ></textarea>
+            class="w-full min-h-[260px] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"></textarea>
 
         </div>
 
@@ -379,30 +374,27 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
       el.classList.toggle('on');
 
       if (el.classList.contains('on')) {
+      el.classList.remove(
+        'border-[#7c6ac9]',
+        'text-[#7c6ac9]'
+      );
 
-        el.classList.remove(
-          'border-[#355a75]',
-          'text-[#6a9ab4]'
-        );
-
-        el.classList.add(
-          'bg-[#3a8fba]',
-          'border-[#3a8fba]',
-          'text-white'
-        );
-
+      el.classList.add(
+        'bg-[#9E7AE2]',
+        'border-[#9E7AE2]',
+        'text-white'
+      );
       } else {
+      el.classList.remove(
+        'bg-[#9E7AE2]',
+        'border-[#9E7AE2]',
+        'text-white'
+      );
 
-        el.classList.remove(
-          'bg-[#3a8fba]',
-          'border-[#3a8fba]',
-          'text-white'
-        );
-
-        el.classList.add(
-          'border-[#355a75]',
-          'text-[#6a9ab4]'
-        );
+      el.classList.add(
+        'border-[#7c6ac9]',
+        'text-[#7c6ac9]'
+      );
       }
     }
 
@@ -469,4 +461,5 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
   </script>
 
 </body>
+
 </html>

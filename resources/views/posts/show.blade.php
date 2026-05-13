@@ -54,18 +54,18 @@
     class="mx-auto flex max-w-[520px] flex-1 flex-col">
 
     <!-- TOPBAR -->
-    <div class="sticky top-0 z-40 border-b-2 border-[#3a8fba] bg-[#1e1e3a]">
+    <div class="sticky top-0 z-40 border-b-2 border-[#3a8fba] bg-[#402988]">
 
       <div
         onclick="window.location.href='{{ route('posts.index') }}';"
-        class="cursor-pointer border-b border-[#2a2a44] px-5 py-3 text-[15px] font-bold text-[#5aabd0]">
+        class="cursor-pointer border-b border-[#2a2a44] px-5 py-3 text-[15px] font-bold text-white">
         ← Kembali
       </div>
 
-      <div class="flex items-center gap-[14px] bg-[#243352] px-5 py-3">
+      <div class="flex items-center gap-[14px] bg-[#402988] px-5 py-3">
 
         <div
-          class="flex h-[56px] w-[44px] flex-shrink-0 items-center justify-center overflow-hidden rounded-[6px] bg-[#8ab4d4] text-[20px]">
+            class="flex h-[56px] w-[44px] flex-shrink-0 items-center justify-center overflow-hidden rounded-[6px] bg-[#5c77c9] text-[20px]">
 
           <img
             src="{{ asset('images/' . $post->cover) }}"
@@ -75,11 +75,11 @@
 
         <div>
           <div id="story-title"
-            class="text-[14px] font-semibold text-[#e0f0ff]">
+            class="text-[14px] font-semibold text-[#ffffff]">
             {{ $post->title }}
           </div>
 
-          <div class="mt-[2px] text-[11px] text-[#7a9ab4]">
+          <div class="mt-[2px] text-[11px] text-[#ffffff]">
             {{ $post->user->name }}
           </div>
         </div>
@@ -88,57 +88,56 @@
 
     <!-- TOOLBAR -->
     <div
-      class="flex items-center border-b border-[#2a3a50] bg-[#1e2a3a] px-5 py-2">
+      class="flex items-center border-b border-[#2a2a44] bg-[#402988] px-5 py-2">
 
       <button
-        onclick="fontSize('sm')"
-        class="rounded-[6px] px-[10px] py-[5px] text-[13px] font-semibold text-[#6a8aaa] transition-all duration-200 hover:bg-[rgba(90,171,208,0.1)] hover:text-[#a0c8e0]">
-        A-
+      onclick="fontSize('sm')"
+      class="rounded-[6px] px-[10px] py-[5px] text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[rgba(255,255,255,0.1)] hover:text-[#e0e7ff]">
+      A-
       </button>
 
       <button
-        onclick="fontSize('lg')"
-        class="rounded-[6px] px-[10px] py-[5px] text-[13px] font-semibold text-[#6a8aaa] transition-all duration-200 hover:bg-[rgba(90,171,208,0.1)] hover:text-[#a0c8e0]">
-        A+
+      onclick="fontSize('lg')"
+      class="rounded-[6px] px-[10px] py-[5px] text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[rgba(255,255,255,0.1)] hover:text-[#e0e7ff]">
+      A+
       </button>
 
-      <div class="mx-1 h-5 w-px flex-shrink-0 bg-[#2a3a50]"></div>
+      <div class="mx-1 h-5 w-px flex-shrink-0 bg-[#2a2a44]"></div>
 
       <div
-        onclick="handleProgress(event)"
-        title="Progress baca"
-        class="relative mx-2 h-1 flex-1 cursor-pointer rounded-[2px] bg-[#2a3a50]">
+      onclick="handleProgress(event)"
+      title="Progress baca"
+      class="relative mx-2 h-1 flex-1 cursor-pointer rounded-[2px] bg-[#2a2a44]">
 
-        <div id="progress-fill"
-          class="h-full w-[18%] rounded-[2px] bg-[#3a8fba] transition-all duration-300">
-        </div>
+      <div id="progress-fill"
+        class="h-full w-[18%] rounded-[2px] bg-[#7c3aed] transition-all duration-300">
+      </div>
       </div>
 
-      <div class="mx-1 h-5 w-px flex-shrink-0 bg-[#2a3a50]"></div>
+      <div class="mx-1 h-5 w-px flex-shrink-0 bg-[#2a2a44]"></div>
 
       <button
-        onclick="toggleDark()"
-        title="Mode gelap"
-        class="rounded-[6px] px-2 py-[5px] text-[16px] text-[#6a8aaa] transition-all duration-200 hover:bg-[rgba(90,171,208,0.1)] hover:text-[#a0c8e0]">
-        🌙
+      onclick="toggleDark()"
+      title="Mode gelap"
+      class="rounded-[6px] px-2 py-[5px] text-[16px] text-white transition-all duration-200 hover:bg-[rgba(255,255,255,0.1)] hover:text-[#e0e7ff]">
+      🌙
       </button>
     </div>
 
     <!-- CONTENT -->
     <div id="content-area"
-      class="font-story flex-1 bg-[#f5f5f0] px-10 py-8">
+      class="font-story flex-1 bg-[#f5f5f0] px-10 py-8 text-black">
 
       <div
-        class="mb-5 border-b border-[#dde8ee] pb-4 text-center text-[18px] font-bold text-[#1a2a3a]">
-        {{ $post->title }}
+      class="mb-5 border-b border-[#dde8ee] pb-4 text-center text-[18px] font-bold">
+      {{ $post->title }}
       </div>
 
-      <div id="story-body"
-        class="text-[15px] font-light leading-[1.95] text-[#2a3a4a]">
+      <div class="text-[15px] font-light leading-[1.95]">
 
-        <p class="mb-5">
-          {{ $post->content }}
-        </p>
+      <p class="mb-5">
+      {{ $post->content }}
+      </p>
 
       </div>
     </div>
@@ -153,7 +152,7 @@
 
         <button
           onclick="toast('📤 Link disalin!')"
-          class="flex items-center gap-[6px] bg-transparent text-[13px] font-medium text-[#4a6a8a] transition-colors duration-200 hover:text-[#3a8fba]">
+          class="flex items-center gap-[6px] bg-transparent text-[13px] font-medium transition-colors duration-200 hover:text-[#3a8fba]">
 
           <span class="text-[16px]">＜</span>
           <span>Bagikan</span>
@@ -166,13 +165,13 @@
 
         <button
           onclick="prevEp()"
-          class="flex-1 rounded-[8px] border border-[#c0d0e0] bg-[#e8eff6] px-[10px] py-[10px] text-center text-[13px] font-semibold text-[#4a6a8a] transition-all duration-200 hover:bg-[#d8e8f4]">
+          class="flex-1 rounded-[8px] border border-[#c0d0e0] bg-[#e8eff6] px-[10px] py-[10px] text-center text-[13px] font-semibold text-black transition-all duration-200 hover:bg-[#d8e8f4]">
           ← Sebelumnya
         </button>
 
         <button
           onclick="nextEp()"
-          class="flex-1 rounded-[8px] bg-[#2a5a8a] px-[10px] py-[10px] text-center text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[#3a7ab0]">
+          class="flex-1 rounded-[8px] bg-[#7c3aed] px-[10px] py-[10px] text-center text-[13px] font-semibold text-white transition-all duration-200 hover:bg-[#402988]">
           Berikutnya →
         </button>
       </div>
@@ -236,15 +235,23 @@
     if (darkMode) {
       ca.classList.remove('bg-[#f5f5f0]');
       ca.classList.add('bg-[#1a1a2e]');
+      ca.classList.remove('text-black');
+      ca.classList.add('text-white');
 
       ba.classList.remove('bg-[#f0f4f8]');
-      ba.classList.add('bg-[#1e2a3a]');
+      ba.classList.add('bg-[#402988]');
+      ba.classList.remove('text-black');
+      ba.classList.add('text-white');
     } else {
       ca.classList.remove('bg-[#1a1a2e]');
       ca.classList.add('bg-[#f5f5f0]');
+      ca.classList.remove('text-white');
+      ca.classList.add('text-black');
 
-      ba.classList.remove('bg-[#1e2a3a]');
+      ba.classList.remove('bg-[#402988]');
       ba.classList.add('bg-[#f0f4f8]');
+      ba.classList.remove('text-white');
+      ba.classList.add('text-black');
     }
   }
 
