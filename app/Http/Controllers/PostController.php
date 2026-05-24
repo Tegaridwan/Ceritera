@@ -17,7 +17,7 @@ class PostController extends Controller
         // $posts = Post::where('user_id', Auth::id())->get();
         return view('posts.index', compact('posts'));
     }
-    
+
     public function myPosts()
     {
         $posts = Post::where('user_id', Auth::id())->latest()->get();
@@ -28,6 +28,7 @@ class PostController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
+
     {
         return view('posts.create');
     }
@@ -57,6 +58,11 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show', compact('post'));
+    }
+
+    public function read(Post $post)
+    {
+        return view('posts.read', compact('post'));
     }
 
     /**

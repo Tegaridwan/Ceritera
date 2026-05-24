@@ -2,37 +2,85 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChapterController;
-
-Route::resource('posts', PostController::class)->middleware('auth');
-Route::resource('posts.chapters', ChapterController::class)->middleware('auth');
-
-Route::get('/ceritamu', [PostController::class, 'myPosts'])->name('posts.ceritamu');
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('posts.index');
 });
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
-
-
-Route::get('/dashboard', [PostController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('dashboard');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    /*
+    |--------------------------------------------------------------------------
+    | POSTS
+    |--------------------------------------------------------------------------
+    */
+
     Route::resource('posts', PostController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | READ STORY
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/posts/{post}/read', [PostController::class, 'read'])
+        ->name('posts.read');
+
+    /*
+    |--------------------------------------------------------------------------
+    | MY STORIES
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/ceritamu', [PostController::class, 'myPosts'])
+        ->name('posts.ceritamu');
+
+    /*
+    |--------------------------------------------------------------------------
+    | CHAPTERS
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('posts.chapters', ChapterController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | DASHBOARD
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/dashboard', [PostController::class, 'index'])
+        ->name('dashboard');
+
+    /*
+    |--------------------------------------------------------------------------
+    | PROFILE
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+
 });
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/admin', function () {
+
+    return view('admin.index');
+
+})->middleware('auth');
 
 require __DIR__.'/auth.php';
