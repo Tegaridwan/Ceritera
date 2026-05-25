@@ -299,19 +299,72 @@
 
         </div> -->
 
-        <div class="flex flex-col gap-2">
+        <!-- CHAPTER -->
+        <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
 
-          <label class="text-[13px] font-semibold text-black">
-            Isi Cerita
-          </label>
+          <div class="text-[11px] font-bold tracking-[2px] uppercase text-black">
+            Chapter Cerita
+          </div>
 
-          <textarea
-            id="ep-isi"
-            rows="5"
-            placeholder="Mulai tulis ceritamu di sini...
+          <button
+            type="button"
+            onclick="addChapter()"
+            class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
+            + Tambah Chapter
+          </button>
 
-Gunakan paragraf yang jelas dan menarik untuk pembaca."
-            class="w-full min-h-[260px] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"></textarea>
+        </div>
+
+        <!-- TEMPAT SEMUA CHAPTER -->
+        <div id="chapter-container" class="flex flex-col gap-6">
+
+          <!-- CHAPTER PERTAMA -->
+          <div class="chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]">
+
+            <div class="flex items-center justify-between mb-4">
+
+              <h2 class="text-lg font-bold text-[#402988]">
+                Chapter 1
+              </h2>
+
+              <button
+                type="button"
+                onclick="removeChapter(this)"
+                class="text-sm text-red-500 hover:text-red-700">
+                Hapus
+              </button>
+
+            </div>
+
+            <!-- JUDUL CHAPTER -->
+            <div class="flex flex-col gap-2 mb-4">
+
+              <label class="text-[13px] font-semibold text-black">
+                Judul Chapter
+              </label>
+
+              <input
+                type="text"
+                placeholder="Masukkan judul chapter..."
+                class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
+
+            </div>
+
+            <!-- ISI CHAPTER -->
+            <div class="flex flex-col gap-2">
+
+              <label class="text-[13px] font-semibold text-black">
+                Isi Cerita
+              </label>
+
+              <textarea
+                rows="6"
+                placeholder="Mulai tulis chapter..."
+                class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none"></textarea>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -374,27 +427,27 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
       el.classList.toggle('on');
 
       if (el.classList.contains('on')) {
-      el.classList.remove(
-        'border-[#7c6ac9]',
-        'text-[#7c6ac9]'
-      );
+        el.classList.remove(
+          'border-[#7c6ac9]',
+          'text-[#7c6ac9]'
+        );
 
-      el.classList.add(
-        'bg-[#9E7AE2]',
-        'border-[#9E7AE2]',
-        'text-white'
-      );
+        el.classList.add(
+          'bg-[#9E7AE2]',
+          'border-[#9E7AE2]',
+          'text-white'
+        );
       } else {
-      el.classList.remove(
-        'bg-[#9E7AE2]',
-        'border-[#9E7AE2]',
-        'text-white'
-      );
+        el.classList.remove(
+          'bg-[#9E7AE2]',
+          'border-[#9E7AE2]',
+          'text-white'
+        );
 
-      el.classList.add(
-        'border-[#7c6ac9]',
-        'text-[#7c6ac9]'
-      );
+        el.classList.add(
+          'border-[#7c6ac9]',
+          'text-[#7c6ac9]'
+        );
       }
     }
 
@@ -457,6 +510,54 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
         el.classList.add('translate-y-[80px]');
 
       }, 2500);
+    }
+
+    let chapterCount = 1;
+
+    function addChapter() {
+      chapterCount++;
+      const container = document.getElementById('chapter-container');
+      const chapter = document.createElement('div');
+      chapter.className =
+        "chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]";
+      chapter.innerHTML = `
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold text-[#402988]">
+        Chapter ${chapterCount}
+      </h2>
+      <button
+        type="button"
+        onclick="removeChapter(this)"
+        class="text-sm text-red-500 hover:text-red-700">
+        Hapus
+      </button>
+    </div>
+    <div class="flex flex-col gap-2 mb-4">
+      <label class="text-[13px] font-semibold text-black">
+        Judul Chapter
+      </label>
+      <input
+        type="text"
+        placeholder="Masukkan judul chapter..."
+        class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
+    </div>
+    <div class="flex flex-col gap-2">
+      <label class="text-[13px] font-semibold text-black">
+        Isi Cerita
+      </label>
+      <textarea
+        rows="6"
+        placeholder="Mulai tulis chapter..."
+        class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none"></textarea>
+    </div>
+  `;
+      container.appendChild(chapter);
+      toast('📚 Chapter baru ditambahkan!');
+    }
+    function removeChapter(button) {
+      const chapterBox = button.closest('.chapter-box');
+      chapterBox.remove();
+      toast('🗑️ Chapter dihapus!');
     }
   </script>
 

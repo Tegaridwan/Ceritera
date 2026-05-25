@@ -50,7 +50,18 @@
         @foreach ($posts as $post)
 
         <a href="/posts/{{ $post->id }}/edit" class="group block">
-            <div class="aspect-[2/3] overflow-hidden rounded-lg bg-gray-200 shadow-sm">
+            <div class="relative aspect-[2/3] overflow-hidden rounded-lg bg-gray-200 shadow-sm">
+                <div class="absolute top-2 left-2 z-10">
+                    @if ($post->is_draft)
+                    <span class="bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
+                        Draft
+                    </span>
+                    @else
+                    <span class="bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
+                        Publish
+                    </span>
+                    @endif
+                </div>
                 <img src="{{ asset('images/' . $post->cover) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
             </div>
             <div class="mt-2">

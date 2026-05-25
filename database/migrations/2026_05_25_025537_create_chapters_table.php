@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
-
-            $table->string('title'); // Bab 1, Bab 2
+            $table->foreignId('post_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->string('title');
             $table->longText('content');
-
-            $table->integer('chapter_number'); // urutan bab
-
+            $table->integer('chapter_number');
             $table->timestamps();
         });
     }

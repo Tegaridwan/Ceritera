@@ -214,50 +214,114 @@
       </div>
 
     </div>
-    <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
+    <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+      @csrf
+      @method('PUT')
 
-      <div class="flex flex-col gap-5">
-        <div class="flex flex-col gap-2">
+      <!-- CHAPTER -->
+      <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
 
-          <label class="text-[13px] font-semibold text-black">
-            Isi Cerita
-          </label>
+        <div class="flex items-center justify-between mb-5">
 
-          <textarea
-            id="ep-isi"
-            rows="5"
-            placeholder="Mulai tulis ceritamu di sini...
+          <div class="text-[11px] font-bold tracking-[2px] uppercase text-black">
+            Chapter Cerita
+          </div>
 
-Gunakan paragraf yang jelas dan menarik untuk pembaca."
-            class="w-full min-h-[260px] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"></textarea>
+          <button
+            type="button"
+            onclick="addChapter()"
+            class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white">
+            + Tambah Chapter
+          </button>
+
+        </div>
+
+        <!-- CONTAINER -->
+        <div id="chapter-container" class="flex flex-col gap-6">
+
+          @foreach ($post->chapters as $index => $chapter)
+
+          <div class="chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]">
+
+            <div class="flex items-center justify-between mb-4">
+
+              <h2 class="text-lg font-bold text-[#402988]">
+                Chapter {{ $index + 1 }}
+              </h2>
+
+              <button
+                type="button"
+                onclick="removeChapter(this)"
+                class="text-sm text-red-500">
+                Hapus
+              </button>
+
+            </div>
+
+            <!-- ID CHAPTER -->
+            <input
+              type="hidden"
+              name="chapters[{{ $index }}][id]"
+              value="{{ $chapter->id }}">
+
+            <!-- JUDUL -->
+            <div class="flex flex-col gap-2 mb-4">
+
+              <label class="text-[13px] font-semibold text-black">
+                Judul Chapter
+              </label>
+
+              <input
+                type="text"
+                name="chapters[{{ $index }}][title]"
+                value="{{ $chapter->title }}"
+                class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
+
+            </div>
+
+            <!-- ISI -->
+            <div class="flex flex-col gap-2">
+
+              <label class="text-[13px] font-semibold text-black">
+                Isi Cerita
+              </label>
+
+              <textarea
+                name="chapters[{{ $index }}][content]"
+                rows="6"
+                class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none">{{ $chapter->content }}</textarea>
+
+            </div>
+
+          </div>
+
+          @endforeach
 
         </div>
 
       </div>
 
-    </div>
+      <!-- BUTTON -->
+      <div class="flex flex-col sm:flex-row gap-4 mt-7">
 
-    <!-- BUTTON -->
-    <div class="flex flex-col sm:flex-row gap-4 mt-7">
+        <button
+          onclick="toast('📝 Tersimpan sebagai draft!')"
+          class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#9E7AE2] border border-[#355a75] text-white transition-all duration-200 hover:bg-[#7c6ac9] hover:border-[#7c6ac9]">
+          Simpan Draft
+        </button>
 
-      <button
-        onclick="toast('📝 Tersimpan sebagai draft!')"
-        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#9E7AE2] border border-[#355a75] text-white transition-all duration-200 hover:bg-[#7c6ac9] hover:border-[#7c6ac9]">
-        Simpan Draft
-      </button>
+        <button
+          onclick="doPublish()"
+          class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#402988] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
+          Simpan Perubahan
+        </button>
 
-      <button
-        onclick="doPublish()"
-        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#402988] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
-        Simpan Perubahan
-      </button>
-
-      <button
-        onclick="deleteStory()"
-        class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#f50202] text-white transition-all duration-200 hover:bg-[#b81c26]">
-        Hapus Cerita
-      </button>
-    </div>
+        <button
+          onclick="deleteStory()"
+          class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#f50202] text-white transition-all duration-200 hover:bg-[#b81c26]">
+          Hapus Cerita
+        </button>
+      </div>
 
   </div>
 
@@ -297,27 +361,27 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
       el.classList.toggle('on');
 
       if (el.classList.contains('on')) {
-      el.classList.remove(
-        'border-[#7c6ac9]',
-        'text-[#7c6ac9]'
-      );
+        el.classList.remove(
+          'border-[#7c6ac9]',
+          'text-[#7c6ac9]'
+        );
 
-      el.classList.add(
-        'bg-[#9E7AE2]',
-        'border-[#9E7AE2]',
-        'text-white'
-      );
+        el.classList.add(
+          'bg-[#9E7AE2]',
+          'border-[#9E7AE2]',
+          'text-white'
+        );
       } else {
-      el.classList.remove(
-        'bg-[#9E7AE2]',
-        'border-[#9E7AE2]',
-        'text-white'
-      );
+        el.classList.remove(
+          'bg-[#9E7AE2]',
+          'border-[#9E7AE2]',
+          'text-white'
+        );
 
-      el.classList.add(
-        'border-[#7c6ac9]',
-        'text-[#7c6ac9]'
-      );
+        el.classList.add(
+          'border-[#7c6ac9]',
+          'text-[#7c6ac9]'
+        );
       }
     }
 
@@ -390,6 +454,71 @@ Gunakan paragraf yang jelas dan menarik untuk pembaca."
         el.classList.add('translate-y-[80px]');
 
       }, 2500);
+    }
+
+    let chapterIndex = {{ $post->chapters->count() }};
+
+    function addChapter() {
+
+      const container = document.getElementById('chapter-container');
+
+      const div = document.createElement('div');
+
+      div.className =
+        "chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]";
+
+      div.innerHTML = `
+    
+    <div class="flex items-center justify-between mb-4">
+
+        <h2 class="text-lg font-bold text-[#402988]">
+            Chapter Baru
+        </h2>
+
+        <button
+            type="button"
+            onclick="removeChapter(this)"
+            class="text-sm text-red-500">
+            Hapus
+        </button>
+
+    </div>
+
+    <div class="flex flex-col gap-2 mb-4">
+
+        <label class="text-[13px] font-semibold text-black">
+            Judul Chapter
+        </label>
+
+        <input
+            type="text"
+            name="chapters[${chapterIndex}][title]"
+            class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
+
+    </div>
+
+    <div class="flex flex-col gap-2">
+
+        <label class="text-[13px] font-semibold text-black">
+            Isi Cerita
+        </label>
+
+        <textarea
+            name="chapters[${chapterIndex}][content]"
+            rows="6"
+            class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none"></textarea>
+
+    </div>
+    `;
+
+      container.appendChild(div);
+
+      chapterIndex++;
+    }
+
+    function removeChapter(button) {
+
+      button.closest('.chapter-box').remove();
     }
   </script>
 

@@ -12,52 +12,48 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
 
     /*
-    |--------------------------------------------------------------------------
     | POSTS
-    |--------------------------------------------------------------------------
     */
 
     Route::resource('posts', PostController::class);
 
     /*
-    |--------------------------------------------------------------------------
     | READ STORY
-    |--------------------------------------------------------------------------
     */
 
-    Route::get('/posts/{post}/read', [PostController::class, 'read'])
+    Route::get('/posts/{post}/read/{chapter?}', [PostController::class, 'read'])
         ->name('posts.read');
 
     /*
-    |--------------------------------------------------------------------------
     | MY STORIES
-    |--------------------------------------------------------------------------
     */
 
     Route::get('/ceritamu', [PostController::class, 'myPosts'])
         ->name('posts.ceritamu');
 
     /*
-    |--------------------------------------------------------------------------
     | CHAPTERS
-    |--------------------------------------------------------------------------
     */
 
-    Route::resource('posts.chapters', ChapterController::class);
+    Route::resource('posts.chapters', ChapterController::class)
+    ->middleware('auth');
 
     /*
-    |--------------------------------------------------------------------------
     | DASHBOARD
-    |--------------------------------------------------------------------------
     */
 
     Route::get('/dashboard', [PostController::class, 'index'])
         ->name('dashboard');
 
     /*
-    |--------------------------------------------------------------------------
+    | AUTHOR
+    */
+
+    Route::get('/author/{user}', [PostController::class, 'author'])
+    ->name('author.profile');
+
+    /*
     | PROFILE
-    |--------------------------------------------------------------------------
     */
 
     Route::get('/profile', [ProfileController::class, 'edit'])
@@ -68,19 +64,15 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
-
 });
 
 /*
-|--------------------------------------------------------------------------
 | ADMIN
-|--------------------------------------------------------------------------
 */
 
 Route::get('/admin', function () {
 
     return view('admin.index');
-
 })->middleware('auth');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
