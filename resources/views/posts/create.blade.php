@@ -33,19 +33,15 @@
 
   <!-- TOPBAR -->
   <div class="bg-[#402988] px-5 py-4 flex items-center gap-3 shadow-md">
-
     <span
       onclick="window.location.href='{{ route('posts.index') }}';"
       class="text-[15px] text-[#90b8cc] font-medium cursor-pointer hover:text-white transition">
       ← Beranda
     </span>
-
     <span class="text-[#4a7a9a] text-[15px]">|</span>
-
     <span class="text-[#cce4f0] text-[15px] font-semibold">
       Tulis
     </span>
-
   </div>
 
   <!-- MAIN -->
@@ -53,35 +49,27 @@
 
     <!-- TITLE -->
     <div class="flex items-center gap-3 mb-6">
-
       <span class="text-[28px]">✍️</span>
-
       <h1 class="text-[28px] font-bold text-[#1b2e3e]">
         <span class="text-[#402988]">Tambah Cerita Baru
       </h1>
-
     </div>
 
     <!-- INFORMASI CERITA -->
     <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
-
       <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
         Informasi Cerita
       </div>
-
       <div class="flex flex-col sm:flex-row gap-5 items-start">
-
         <!-- COVER -->
         <div
           id="cover-box"
           class="w-[140px] h-[180px] rounded-xl bg-white border-2 border-dashed border-[#3d6f90] flex flex-col items-center justify-center cursor-pointer flex-shrink-0 relative overflow-hidden transition-all duration-200 hover:border-[#5aabd0] hover:bg-[#2d5070]">
-
           <input
             type="file"
             accept="image/*"
             onchange="previewCover(event)"
             class="absolute inset-0 opacity-0 cursor-pointer">
-
           <img
             id="cover-preview"
             class="w-full h-full object-cover hidden"
@@ -90,84 +78,54 @@
           <div id="cover-icon" class="text-[38px] mb-2">
             🖼️
           </div>
-
           <div
             id="cover-text"
             class="text-[11px] text-black text-center leading-[1.6]">
             Upload<br>Cover
           </div>
-
         </div>
 
         <!-- INPUT -->
         <div class="flex-1 flex flex-col gap-4 w-full">
-
           <div>
-
             <label class="block text-[13px] font-semibold text-black mb-2">
               Judul Cerita
             </label>
-
             <input
               id="judul"
               type="text"
               placeholder="Judul yang menarik..."
               class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]">
-
           </div>
-
-          <div>
-
-            <label class="block text-[13px] font-semibold text-black mb-2">
-              Tagline
-            </label>
-
-            <input
-              type="text"
-              placeholder="Satu kalimat yang menggugah rasa ingin tahu"
-              class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]">
-
-          </div>
-
         </div>
-
       </div>
-
     </div>
 
     <!-- SINOPSIS -->
     <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
-
       <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
         Sinopsis
       </div>
-
       <textarea
         id="sinopsis"
         oninput="updateChar()"
         placeholder="Ceritakan gambaran singkat kisahmu... Buat pembaca penasaran!"
         class="w-full min-h-[180px] leading-[1.8] bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"></textarea>
-
       <div class="text-[12px] text-black text-right mt-2">
         <span id="char-count">0</span> / 500 karakter
       </div>
-
     </div>
 
     <!-- GENRE -->
     <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
-
       <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
         Genre
       </div>
-
       <div class="flex flex-wrap gap-3">
-
         <button onclick="toggleGenre(this)"
           class="gc on text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200">
           Romance
         </button>
-
         <button onclick="toggleGenre(this)"
           class="gc text-[14px] font-medium px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] transition-all duration-200 hover:border-[#9E7AE2] hover:text-white">
           Horor
@@ -207,174 +165,66 @@
 
     </div>
 
-    <!-- PENGATURAN -->
-    <!-- <div class="bg-[#402988] rounded-2xl p-6 mb-5 shadow-lg"> -->
-
-    <!-- <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4] mb-5">
-        Pengaturan
-      </div>
-
-      <!-- STATUS -->
-    <!-- <div class="flex items-center justify-between py-4 border-b border-white/5 gap-4">
-
-        <div>
-
-          <div class="text-[16px] font-medium text-[#cce4f0] mb-1">
-            Status Publikasi
-          </div>
-
-          <div class="text-[12px] text-[#3d6880] leading-[1.7] max-w-[320px]">
-            Atur apakah cerita bisa dilihat publik atau privat
-          </div>
-
-        </div>
-
-        <button
-          id="btn-status"
-          onclick="toggleStatus()"
-          class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#3a8fba] text-[#6a9ab4] whitespace-nowrap transition-all duration-200 active">
-          Publik
-        </button>
-
-      </div> -->
-
-    <!-- USIA -->
-    <!-- <div class="flex items-center justify-between py-4 gap-4"> -->
-
-    <!-- <div>
-
-          <div class="text-[16px] font-medium text-[#cce4f0] mb-1">
-            Kategori Usia
-          </div>
-
-          <div class="text-[12px] text-[#3d6880] leading-[1.7] max-w-[320px]">
-            Sesuaikan konten cerita berdasarkan pembaca
-          </div>
-
-        </div> -->
-
-    <!-- <select
-          class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#355a75] bg-[#243f57] text-[#6a9ab4] outline-none text-center cursor-pointer">
-
-          <option value="all">Semua Umur</option>
-          <option value="17">17+</option>
-
-        </select> -->
-
-    <!-- </div>
-
-    </div> -->
-
-    <!-- EPISODE -->
     <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
-
       <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
-
-        <!-- <div class="text-[11px] font-bold tracking-[2px] uppercase text-[#6a9ab4]">
-          Episode
-        </div>
-
-        <button
-          onclick="toast('Episode baru ditambahkan!')"
-          class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#3a8fba] bg-[rgba(58,143,186,0.1)] text-[#5aabd0] transition-all duration-200 hover:bg-[rgba(58,143,186,0.2)]">
-          + Tambah Episode
-        </button> -->
-
       </div>
-
       <div class="flex flex-col gap-5">
-
-        <!-- <div class="flex flex-col gap-2">
-
-          <label class="text-[13px] font-semibold text-[#6a9ab4]">
-            Judul Episode
-          </label>
-
-          <input
-            id="ep-judul"
-            type="text"
-            placeholder="Ep 1: Nama episode..."
-            class="w-full bg-[#243f57] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-[#cce4f0] outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]"
-          >
-
-        </div> -->
-
         <!-- CHAPTER -->
         <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
-
           <div class="text-[11px] font-bold tracking-[2px] uppercase text-black">
             Chapter Cerita
           </div>
-
           <button
             type="button"
             onclick="addChapter()"
             class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
             + Tambah Chapter
           </button>
-
         </div>
 
         <!-- TEMPAT SEMUA CHAPTER -->
         <div id="chapter-container" class="flex flex-col gap-6">
-
           <!-- CHAPTER PERTAMA -->
           <div class="chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]">
-
             <div class="flex items-center justify-between mb-4">
-
               <h2 class="text-lg font-bold text-[#402988]">
                 Chapter 1
               </h2>
-
               <button
                 type="button"
                 onclick="removeChapter(this)"
                 class="text-sm text-red-500 hover:text-red-700">
                 Hapus
               </button>
-
             </div>
-
             <!-- JUDUL CHAPTER -->
             <div class="flex flex-col gap-2 mb-4">
-
               <label class="text-[13px] font-semibold text-black">
                 Judul Chapter
               </label>
-
               <input
                 type="text"
                 placeholder="Masukkan judul chapter..."
                 class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
-
             </div>
 
             <!-- ISI CHAPTER -->
             <div class="flex flex-col gap-2">
-
               <label class="text-[13px] font-semibold text-black">
                 Isi Cerita
               </label>
-
               <textarea
                 rows="6"
                 placeholder="Mulai tulis chapter..."
                 class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none"></textarea>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
 
     <!-- BUTTON -->
     <div class="flex flex-col sm:flex-row gap-4 mt-7">
-
       <button
         onclick="toast('📝 Tersimpan sebagai draft!')"
         class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#9E7AE2] border border-[#355a75] text-white transition-all duration-200 hover:bg-[#7c6ac9] hover:border-[#7c6ac9]">
@@ -386,7 +236,6 @@
         class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#402988] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
         Publikasi Sekarang
       </button>
-
     </div>
 
   </div>
@@ -455,65 +304,44 @@
     let statusPublic = true;
 
     function toggleStatus() {
-
       statusPublic = !statusPublic;
-
       const btn = document.getElementById('btn-status');
-
       btn.textContent = statusPublic ? 'Publik' : 'Privat';
-
       if (statusPublic) {
-
         btn.style.borderColor = "#3a8fba";
         btn.style.opacity = "1";
-
       } else {
-
         btn.style.borderColor = "#355a75";
         btn.style.opacity = "0.7";
       }
     }
 
     function doPublish() {
-
       const judul = document.getElementById('judul').value.trim();
-
       if (!judul) {
-
         toast('⚠️ Isi judul cerita dulu!');
         return;
       }
-
       toast('🚀 Cerita berhasil dipublikasikan!');
-
       setTimeout(() => {
         window.location.href = 'baca-cerita.html';
       }, 1200);
     }
 
     let tTimer;
-
     function toast(msg) {
-
       const el = document.getElementById('toast');
-
       el.textContent = msg;
-
       el.classList.remove('translate-y-[80px]');
       el.classList.add('translate-y-0');
-
       clearTimeout(tTimer);
-
       tTimer = setTimeout(() => {
-
         el.classList.remove('translate-y-0');
         el.classList.add('translate-y-[80px]');
-
       }, 2500);
     }
 
     let chapterCount = 1;
-
     function addChapter() {
       chapterCount++;
       const container = document.getElementById('chapter-container');

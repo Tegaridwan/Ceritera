@@ -58,8 +58,12 @@ Route::middleware('auth')->group(function () {
     */
 
     Route::middleware(['auth', 'admin'])->group(function () {
+
         Route::get('/admin', [AdminController::class, 'index'])
             ->name('admin.index');
+
+        Route::get('/admin/posts/{id}/read', [AdminController::class, 'read'])
+            ->name('admin.posts.read');
     });
 
     /*
@@ -74,7 +78,7 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
-});
+})->middleware('auth');
 
 /*
 | ADMIN
@@ -83,6 +87,5 @@ Route::middleware('auth')->group(function () {
 // Route::get('/admin', [AdminController::class, 'index'])
 //     ->name('admin.index')
 //     ->middleware('admin');
-// })->middleware('auth');
 
 require __DIR__ . '/auth.php';

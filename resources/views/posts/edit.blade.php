@@ -26,11 +26,9 @@
     body {
       font-family: 'Poppins', sans-serif;
     }
-
     textarea {
       resize: vertical;
     }
-
     select {
       appearance: none;
     }
@@ -38,7 +36,6 @@
 </head>
 
 <body class="bg-gradient-to-b from-[#C4B5FD] from-[16%] to-[#DDD6FE] to-[92%] min-h-screen bg-fixed bg-no-repeat">
-
   <!-- TOPBAR -->
   <div class="bg-[#402988] px-5 py-4 flex items-center gap-3 shadow-md">
 
@@ -47,9 +44,7 @@
       class="text-[15px] text-[#90b8cc] font-medium cursor-pointer hover:text-white transition">
       ← Beranda
     </span>
-
     <span class="text-[#4a7a9a] text-[15px]">|</span>
-
     <span class="text-[#cce4f0] text-[15px] font-semibold">
       Tulis
     </span>
@@ -61,9 +56,7 @@
 
     <!-- TITLE -->
     <div class="flex items-center gap-3 mb-6">
-
       <span class="text-[28px]">✍️</span>
-
       <h1 class="text-[28px] font-bold text-[#1b2e3e]">
         <span class="text-[#402988]">Edit Cerita</span>
       </h1>
@@ -72,18 +65,15 @@
 
     <!-- INFORMASI CERITA -->
     <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
-
       <div class="text-[11px] font-bold tracking-[2px] uppercase text-black mb-5">
         Informasi Cerita
       </div>
-
       <div class="flex flex-col sm:flex-row gap-5 items-start">
 
         <!-- COVER -->
         <div
           id="cover-box"
           class="w-[140px] h-[180px] rounded-xl bg-white border-2 border-dashed border-[#3d6f90] flex flex-col items-center justify-center cursor-pointer flex-shrink-0 relative overflow-hidden transition-all duration-200 hover:border-[#5aabd0] hover:bg-[#2d5070]">
-
           <input
             type="file"
             accept="image/*"
@@ -94,24 +84,19 @@
             id="cover-preview"
             class="w-full h-full object-cover hidden"
             alt="cover">
-
           <div id="cover-icon" class="text-[38px] mb-2">
             🖼️
           </div>
-
           <div
             id="cover-text"
             class="text-[11px] text-black text-center leading-[1.6]">
             Upload<br>Cover
           </div>
-
         </div>
 
         <!-- INPUT -->
         <div class="flex-1 flex flex-col gap-4 w-full">
-
           <div>
-
             <label class="block text-[13px] font-semibold text-black mb-2">
               Judul Cerita
             </label>
@@ -121,11 +106,9 @@
               type="text"
               placeholder="Judul yang menarik..."
               class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]">
-
           </div>
 
           <div>
-
             <label class="block text-[13px] font-semibold text-black mb-2">
               Tagline
             </label>
@@ -134,13 +117,9 @@
               type="text"
               placeholder="Satu kalimat yang menggugah rasa ingin tahu"
               class="w-full bg-white border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none transition-all duration-200 placeholder:text-[#3d6880] focus:border-[#4a9aba]">
-
           </div>
-
         </div>
-
       </div>
-
     </div>
 
     <!-- SINOPSIS -->
@@ -220,42 +199,32 @@
 
       <!-- CHAPTER -->
       <div class="bg-[#DDD6FE] rounded-2xl p-6 mb-5 shadow-lg">
-
         <div class="flex items-center justify-between mb-5">
-
           <div class="text-[11px] font-bold tracking-[2px] uppercase text-black">
             Chapter Cerita
           </div>
-
           <button
             type="button"
             onclick="addChapter()"
             class="text-[14px] font-medium px-5 py-2 rounded-full border border-[#9E7AE2] bg-[#9E7AE2] text-white">
             + Tambah Chapter
           </button>
-
         </div>
 
         <!-- CONTAINER -->
         <div id="chapter-container" class="flex flex-col gap-6">
-
           @foreach ($post->chapters as $index => $chapter)
-
           <div class="chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]">
-
             <div class="flex items-center justify-between mb-4">
-
               <h2 class="text-lg font-bold text-[#402988]">
                 Chapter {{ $index + 1 }}
               </h2>
-
               <button
                 type="button"
                 onclick="removeChapter(this)"
                 class="text-sm text-red-500">
                 Hapus
               </button>
-
             </div>
 
             <!-- ID CHAPTER -->
@@ -266,65 +235,54 @@
 
             <!-- JUDUL -->
             <div class="flex flex-col gap-2 mb-4">
-
               <label class="text-[13px] font-semibold text-black">
                 Judul Chapter
               </label>
-
               <input
                 type="text"
                 name="chapters[{{ $index }}][title]"
                 value="{{ $chapter->title }}"
                 class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
-
             </div>
 
             <!-- ISI -->
             <div class="flex flex-col gap-2">
-
               <label class="text-[13px] font-semibold text-black">
                 Isi Cerita
               </label>
-
               <textarea
                 name="chapters[{{ $index }}][content]"
                 rows="6"
                 class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none">{{ $chapter->content }}</textarea>
-
             </div>
-
           </div>
-
           @endforeach
-
         </div>
-
       </div>
 
       <!-- BUTTON -->
       <div class="flex flex-col sm:flex-row gap-4 mt-7">
-
         <button
+          type="button"
           onclick="toast('📝 Tersimpan sebagai draft!')"
           class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#9E7AE2] border border-[#355a75] text-white transition-all duration-200 hover:bg-[#7c6ac9] hover:border-[#7c6ac9]">
           Simpan Draft
         </button>
-
         <button
+          type="submit"
           onclick="doPublish()"
           class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#402988] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
           Simpan Perubahan
         </button>
-
         <button
+          type="button"
           onclick="deleteStory()"
           class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#f50202] text-white transition-all duration-200 hover:bg-[#b81c26]">
           Hapus Cerita
         </button>
       </div>
-
+    </form>
   </div>
-
   <!-- TOAST -->
   <div
     id="toast"
@@ -336,9 +294,7 @@
     function previewCover(e) {
       const file = e.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
-
       reader.onload = (ev) => {
         const img = document.getElementById('cover-preview');
 
@@ -348,10 +304,8 @@
         document.getElementById('cover-icon').style.display = 'none';
         document.getElementById('cover-text').style.display = 'none';
       };
-
       reader.readAsDataURL(file);
     }
-
     function updateChar() {
       const val = document.getElementById('sinopsis').value.length;
       document.getElementById('char-count').textContent = val;
@@ -391,35 +345,26 @@
     function toggleStatus() {
 
       statusPublic = !statusPublic;
-
       const btn = document.getElementById('btn-status');
-
       btn.textContent = statusPublic ? 'Publik' : 'Privat';
 
       if (statusPublic) {
-
         btn.style.borderColor = "#3a8fba";
         btn.style.opacity = "1";
-
       } else {
-
         btn.style.borderColor = "#355a75";
         btn.style.opacity = "0.7";
       }
     }
 
     function doPublish() {
-
       const judul = document.getElementById('judul').value.trim();
-
       if (!judul) {
-
         toast('⚠️ Isi judul cerita dulu!');
         return;
       }
 
       toast('🚀 Cerita berhasil dipublikasikan!');
-
       setTimeout(() => {
         window.location.href = 'baca-cerita.html';
       }, 1200);
@@ -430,7 +375,7 @@
         toast('🗑️ Cerita berhasil dihapus!');
 
         setTimeout(() => {
-          window.location.href = '{{ route('posts.ceritamu') }}';
+          window.location.href = "{{ route('posts.ceritamu') }}";
         }, 1200);
       }
     }
@@ -438,90 +383,60 @@
     let tTimer;
 
     function toast(msg) {
-
       const el = document.getElementById('toast');
-
       el.textContent = msg;
-
       el.classList.remove('translate-y-[80px]');
       el.classList.add('translate-y-0');
-
       clearTimeout(tTimer);
-
       tTimer = setTimeout(() => {
-
         el.classList.remove('translate-y-0');
         el.classList.add('translate-y-[80px]');
-
       }, 2500);
     }
 
-    let chapterIndex = {{ $post->chapters->count() }};
-
+    let chapterIndex = parseInt("{{ $post->chapters->count() }}") || 0;
     function addChapter() {
-
       const container = document.getElementById('chapter-container');
-
       const div = document.createElement('div');
-
       div.className =
         "chapter-box bg-white rounded-2xl p-5 border border-[#c4b5fd]";
-
       div.innerHTML = `
-    
     <div class="flex items-center justify-between mb-4">
-
         <h2 class="text-lg font-bold text-[#402988]">
             Chapter Baru
         </h2>
-
         <button
             type="button"
             onclick="removeChapter(this)"
             class="text-sm text-red-500">
             Hapus
         </button>
-
     </div>
-
     <div class="flex flex-col gap-2 mb-4">
-
         <label class="text-[13px] font-semibold text-black">
             Judul Chapter
         </label>
-
         <input
             type="text"
             name="chapters[${chapterIndex}][title]"
             class="w-full bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] text-black outline-none">
-
     </div>
-
     <div class="flex flex-col gap-2">
-
         <label class="text-[13px] font-semibold text-black">
             Isi Cerita
         </label>
-
         <textarea
             name="chapters[${chapterIndex}][content]"
             rows="6"
             class="w-full min-h-[220px] bg-[#fafafa] border border-[#355a75] rounded-xl px-4 py-3 text-[15px] leading-[1.9] text-black outline-none"></textarea>
-
     </div>
     `;
-
       container.appendChild(div);
-
       chapterIndex++;
     }
-
     function removeChapter(button) {
-
       button.closest('.chapter-box').remove();
     }
   </script>
-
 </body>
-
 </html>

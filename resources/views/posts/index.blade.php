@@ -1,3 +1,5 @@
+<!-- HALAMAN HOME-->
+
 @extends('layouts.main')
 
 @section('content')

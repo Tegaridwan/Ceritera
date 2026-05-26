@@ -35,11 +35,8 @@ class ProfileController extends Controller
         if ($request->hasFile('photo')) {
 
             $file = $request->file('photo');
-
             $filename = time() . '.' . $file->getClientOriginalExtension();
-
             $file->move(public_path('images/profile'), $filename);
-
             $request->user()->photo = $filename;
         }
 

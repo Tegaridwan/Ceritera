@@ -1,3 +1,5 @@
+<!-- HALAMAN DASHBOARD ADMIN -->
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -83,8 +85,8 @@
                         '{{ $user->name }}',
                         '{{ $user->email }}',
                         '{{ $user->role }}',
-                        '{{ $user->created_at->format('d F Y') }}',
-                        '{{ $user->posts->count() }})')">
+                        '{{ $user->created_at->format("d F Y") }}',
+                        '{{ $user->posts->count() }}')">
                         <div class="flex items-center gap-3">
 
                             <div class="w-9 h-9 rounded-full bg-[#7C4DCC] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
@@ -107,6 +109,7 @@
                             <span class="text-[#C4B5FD] text-[11px]">
                                 Bergabung {{ $user->created_at->format('d M Y') }}
                             </span>
+                            <!-- button hapus -->
                             <button onclick="event.stopPropagation(); hapusItem(this)" class="text-gray-400 hover:text-red-400 transition text-lg">🗑</button>
                         </div>
 
@@ -125,12 +128,8 @@
                     <div class="space-y-3">
                         @foreach($posts as $post)
                         <div class="bg-[#1A0A3C] rounded-xl px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-[#2A1A4C] transition"
-                            onclick="lihatDetailCerita(
-                            '{{ addslashes($post->title) }}',
-                            '{{ addslashes($post->user->name) }}',
-                            '{{ $post->genre }}',
-                            '{{ addslashes($post->sinopsis) }}',
-                            )">
+                            data-post='@json($post->load("user","chapters"))'
+                            onclick="lihatDetailCerita(this.dataset.post)">
                             <div class="flex items-center gap-3">
                                 <div class="w-8 h-10 rounded overflow-hidden flex-shrink-0">
                                     <img
@@ -147,11 +146,12 @@
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
-                                <button
-                                    onclick="bukaBacaCerita()"
-                                    class="mt-5 w-full bg-[#4B2CA0] hover:bg-[#7C4DCC] text-white font-semibold py-2.5 rounded-lg">
+                                <a
+                                    href="{{ route('admin.posts.read', $post->id) }}"
+                                    class="bg-[#4B2CA0] hover:bg-[#7C4DCC] text-white px-4 py-2 rounded-lg text-sm">
                                     📖 Baca Cerita
-                                </button>
+                                </a>
+                                <!-- button hapus -->
                                 <button onclick="event.stopPropagation(); hapusItem(this)" class="text-gray-400 hover:text-red-400 transition text-lg">🗑</button>
                             </div>
                         </div>
@@ -163,22 +163,21 @@
     </div>
 
     <script>
-
         function showSection(name) {
             ['dashboard', 'users', 'stories'].forEach(s => {
                 let section = document.getElementById('section-' + s);
                 let nav = document.getElementById('nav-' + s);
-                
-                if(section) section.classList.add('hidden');
-                if(nav) nav.className = 'block px-4 py-2.5 rounded-lg text-sm text-gray-300 cursor-pointer hover:text-white';
+
+                if (section) section.classList.add('hidden');
+                if (nav) nav.className = 'block px-4 py-2.5 rounded-lg text-sm text-gray-300 cursor-pointer hover:text-white';
             });
-            
+
             let activeSection = document.getElementById('section-' + name);
             let activeNav = document.getElementById('nav-' + name);
-            
-            if(activeSection) activeSection.classList.remove('hidden');
-            if(activeNav) activeNav.className = 'block px-4 py-2.5 rounded-lg text-sm text-white cursor-pointer bg-[#7C4DCC] font-semibold';
-            
+
+            if (activeSection) activeSection.classList.remove('hidden');
+            if (activeNav) activeNav.className = 'block px-4 py-2.5 rounded-lg text-sm text-white cursor-pointer bg-[#7C4DCC] font-semibold';
+
             if (name === 'users') showView('user-list');
             if (name === 'stories') showView('story-list');
         }
@@ -186,13 +185,13 @@
         function showView(type) {
             ['view-user-list', 'view-user-detail'].forEach(id => {
                 let el = document.getElementById(id);
-                if(el) el.classList.add('hidden');
+                if (el) el.classList.add('hidden');
             });
             ['view-story-list', 'view-story-detail', 'view-story-read'].forEach(id => {
                 let el = document.getElementById(id);
-                if(el) el.classList.add('hidden');
+                if (el) el.classList.add('hidden');
             });
-            
+
             let activeView = document.getElementById('view-' + type);
             if (activeView) activeView.classList.remove('hidden');
         }
@@ -200,15 +199,13 @@
         let currentStory = null;
         let currentChapter = 0;
 
-        function lihatDetailCerita(post) {
-            currentStory = post;
+        function lihatDetailCerita(postData) {
 
-            document.getElementById('ds-judul').textContent = post.title;
-            document.getElementById('ds-penulis').textContent = post.user.name;
-            document.getElementById('ds-genre').textContent = post.genre;
-            document.getElementById('ds-sinopsis').textContent = post.sinopsis;
+            currentStory = JSON.parse(postData);
 
-            showView('story-detail');
+            console.log(currentStory);
+
+            bukaBacaCerita();
         }
 
         function bukaBacaCerita() {

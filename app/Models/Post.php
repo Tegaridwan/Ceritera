@@ -19,6 +19,7 @@ class Post extends Model
     public function chapters()
     {
         return $this->hasMany(Chapter::class);
+            
     }
 
     public function user()
