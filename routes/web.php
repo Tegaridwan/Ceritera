@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,7 +37,7 @@ Route::middleware('auth')->group(function () {
     */
 
     Route::resource('posts.chapters', ChapterController::class)
-    ->middleware('auth');
+        ->middleware('auth');
 
     /*
     | DASHBOARD
@@ -50,7 +51,16 @@ Route::middleware('auth')->group(function () {
     */
 
     Route::get('/author/{user}', [PostController::class, 'author'])
-    ->name('author.profile');
+        ->name('author.profile');
+
+    /*
+    | ADMIN
+    */
+
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/admin', [AdminController::class, 'index'])
+            ->name('admin.index');
+    });
 
     /*
     | PROFILE
@@ -70,9 +80,9 @@ Route::middleware('auth')->group(function () {
 | ADMIN
 */
 
-Route::get('/admin', function () {
-
-    return view('admin.index');
-})->middleware('auth');
+// Route::get('/admin', [AdminController::class, 'index'])
+//     ->name('admin.index')
+//     ->middleware('admin');
+// })->middleware('auth');
 
 require __DIR__ . '/auth.php';
