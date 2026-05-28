@@ -212,10 +212,25 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // if ($post->user_id !== Auth::id()) {
-        //     abort(403);
-        // }
-        // $post->delete();
-        // return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+
+        if ($post->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        // Hapus cover di lokL
+        if ($post->cover && Storage::disk('public')->exists($post->cover)) {
+            Storage::disk('public')->delete($post->cover);
+        }
+
+        // 2. Hapus data chapter agar tidak eror soalnya chapter anak dari post
+        $post->chapters()->delete();
+
+        $post->delete();
+
+        if (request()->ajax() || request()->wantsJson()) {
+            return response()->json(['success' => true, 'message' => 'Cerita berhasil dihapus!']);
+        }
+
+        return redirect()->route('posts.ceritamu')->with('success', 'Cerita berhasil dihapus!');
     }
 }

@@ -216,12 +216,38 @@
                     class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#402988] text-white transition-all duration-200 hover:bg-[#7c6ac9]">
                     Simpan Perubahan
                 </button>
-                <button type="button" onclick="deleteStory()"
+                <button type="button" onclick="openDeleteModal()"
                     class="flex-1 text-[16px] font-semibold py-4 rounded-xl bg-[#f50202] text-white transition-all duration-200 hover:bg-[#b81c26]">
                     Hapus Cerita
                 </button>
             </div>
         </form>
+    </div>
+
+    {{-- add delete modal dari princes dilla --}}
+    <div id="delete-modal"
+        class="fixed inset-0 bg-black/50 z-[9999] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+        <div
+            class="bg-white rounded-2xl p-6 max-w-[400px] w-full mx-4 shadow-2xl transform scale-95 transition-all duration-300">
+            <div class="text-center">
+                <span class="text-4xl block mb-3">⚠️</span>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Hapus Cerita?</h3>
+                <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                    Apakah kamu yakin ingin menghapus cerita ini? Semua chapter dan cover akan dihapus permanen.
+                    Tindakan ini tidak bisa dibatalkan.
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <button type="button" onclick="closeDeleteModal()"
+                    class="flex-1 py-3 rounded-xl border border-gray-300 text-gray-700 font-medium text-sm hover:bg-gray-50 transition">
+                    Batal
+                </button>
+                <button type="button" onclick="confirmDeleteStory()"
+                    class="flex-1 py-3 rounded-xl bg-red-600 text-white font-medium text-sm hover:bg-red-700 transition shadow-lg shadow-red-600/20">
+                    Ya, Hapus
+                </button>
+            </div>
+        </div>
     </div>
 
     <div id="toast"
@@ -251,14 +277,52 @@
             document.getElementById('char-count').textContent = val;
         }
 
-        function deleteStory() {
-            if (confirm('Apakah kamu yakin ingin menghapus cerita ini? Tindakan ini tidak bisa dibatalkan.')) {
-                toast('🗑️ Cerita berhasil dihapus!');
+        // FUNGSI JAVASCRIPT UNTUK KONTROL MODAL HAPUS
+        function openDeleteModal() {
+            const modal = document.getElementById('delete-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+        }
 
-                setTimeout(() => {
-                    window.location.href = "{{ route('posts.ceritamu') }}";
-                }, 1200);
-            }
+        function closeDeleteModal() {
+            const modal = document.getElementById('delete-modal');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+
+        function confirmDeleteStory() {
+            closeDeleteModal();
+
+            fetch("{{ route('posts.destroy', $post->id) }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _method: 'DELETE'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        toast('🗑️ Cerita berhasil dihapus!');
+                        setTimeout(() => {
+                            window.location.href = "{{ route('posts.ceritamu') }}";
+                        }, 1200);
+                    } else {
+                        alert('Gagal menghapus cerita. Silakan coba lagi.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan sistem.');
+                });
         }
 
         let tTimer;
