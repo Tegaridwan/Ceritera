@@ -53,22 +53,65 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
+            'title' => 'required|max:255',
+            'sinopsis' => 'required|max:500',
+            'genres' => 'required|array|min:1',
+            'genres.*' => 'string',
+            'cover' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'chapters' => 'required|array|min:1',
+            'chapters.*.title' => 'required',
+            'chapters.*.content' => 'required',
         ]);
 
-        Post::create([
+        $status = 'privat';
+        $isDraft = 1;
+
+        if ($request->action === 'publish') {
+
+            $status = 'publik';
+            $isDraft = 0;
+        }
+        if ($request->action === 'draft') {
+
+            $status = 'privat';
+            $isDraft = 1;
+        }
+
+        $coverPath = null;
+
+        if ($request->hasFile('cover')) {
+
+            $coverPath = $request->file('cover')
+                ->store('covers', 'public');
+        }
+
+        // dd($request->all());
+
+        $post = Post::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
-            'content' => $request->content,
+            'cover' => $coverPath,
+            'sinopsis' => $request->sinopsis,
+            'genre' => $request->genres,
+            'status' => $status,
+            'is_draft' => $isDraft,
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+        //perulangan karena chapter bisa banya
+        foreach ($request->chapters as $index => $chapter) {
+
+            Chapter::create([
+                'post_id' => $post->id,
+                'title' => $chapter['title'],
+                'content' => $chapter['content'],
+                'chapter_number' => $index + 1,
+            ]);
+        }
+
+        return redirect()->route('posts.ceritamu');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Post $post)
     {
         return view('posts.show', compact('post'));

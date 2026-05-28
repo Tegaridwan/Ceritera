@@ -16,10 +16,13 @@ class Post extends Model
         'is_draft'
     ];
 
+    protected $casts = [
+        'genre' => 'array',
+    ];
+
     public function chapters()
     {
         return $this->hasMany(Chapter::class);
-            
     }
 
     public function user()
