@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -27,7 +28,8 @@ class PostController extends Controller
 
     public function myPosts()
     {
-        $posts = Post::where('user_id', Auth::id())->latest()->get();
+        $posts = Post::query()
+            ->where('user_id', Auth::id())->latest()->get();
         return view('posts.ceritamu', compact('posts'));
     }
 
@@ -154,34 +156,54 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Post $post)
     {
-        $post->update([
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-
-        // hapus chapter lama
-        $post->chapters()->delete();
-
-        // simpan chapter baru
-        if ($request->chapters) {
-
-            foreach ($request->chapters as $chapter) {
-
-                Chapter::create([
-                    'post_id' => $post->id,
-                    'title' => $chapter['title'],
-                    'content' => $chapter['content'],
-                ]);
-            }
+        if ($post->user_id !== Auth::id()) {
+            abort(403);
         }
 
+        // dd($request->all());
+        $request->validate([
+            'title' => 'required|max:255',
+            'sinopsis' => 'required|max:500',
+            'genres' => 'required|array|min:1',
+            'genres.*' => 'string',
+            'cover' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'chapters' => 'required|array|min:1',
+            'chapters.*.title' => 'required',
+            'chapters.*.content' => 'required',
+        ]);
+
+        // COVER 
+        $coverPath = $post->cover;
+        if ($request->hasFile('cover')) {
+            // HAPUS COVER LAMA 
+            if ($post->cover && Storage::disk('public')->exists($post->cover)) {
+                Storage::disk('public')->delete($post->cover);
+            }
+            // SIMPAN COVER BARU
+            $coverPath = $request->file('cover')->store('covers', 'public');
+        }
+
+        // dd($request->all());
+        // UPDATE POST
+        $post->update([
+            'title' => $request->title,
+            'cover' => $coverPath,
+            'sinopsis' => $request->sinopsis,
+            'genre' => $request->genres,
+        ]);
+        // HAPUS CHAPTER LAMA
+        $post->chapters()->delete();
+        // SIMPAN CHAPTER BARU 
+        foreach ($request->chapters as $index => $chapter) {
+            Chapter::create([
+                'post_id' => $post->id,
+                'title' => $chapter['title'],
+                'content' => $chapter['content'],
+                'chapter_number' => $index + 1,
+            ]);
+        }
         return redirect()->route('posts.ceritamu');
     }
 
