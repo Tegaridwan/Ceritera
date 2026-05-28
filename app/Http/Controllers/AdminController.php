@@ -26,7 +26,6 @@ class AdminController extends Controller
 
     public function destroy(Post $post)
     {
-        // hapus semua chapter
         $post->chapters()->delete();
 
         // hapus cover dari storage
@@ -35,7 +34,6 @@ class AdminController extends Controller
             Storage::disk('public')->delete('covers/' . $post->cover);
         }
 
-        // hapus post
         $post->delete();
 
         return redirect()
@@ -44,7 +42,7 @@ class AdminController extends Controller
     }
     public function destroyUser(User $user)
     {
-        // cegah admin menghapus dirinya sendiri
+        //logic ben gaiso hapus awakdewe
         if ($user->id === auth()->user()->id) {
 
             return redirect()
@@ -52,16 +50,15 @@ class AdminController extends Controller
                 ->with('error', 'Tidak bisa menghapus akun sendiri');
         }
 
-        // hapus chapter dari semua post user
         foreach ($user->posts as $post) {
 
             $post->chapters()->delete();
         }
 
-        // hapus semua post user
+        // jika user memiliki post dan dihapus maka semua post akan dihapus
         $user->posts()->delete();
 
-        // hapus user
+
         $user->delete();
 
         return redirect()
