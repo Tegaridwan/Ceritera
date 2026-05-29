@@ -28,11 +28,10 @@
                 <a href="/posts"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
         {{ request('genre') == null ? 'bg-[#8B5CF6] text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
                     Semua
-
                 </a>
 
+                <!-- Perbaikan: ?genres= diubah menjadi ?genre= -->
                 <a href="/posts?genre=romance"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
         {{ request('genre') == 'romance' ? 'bg-pink-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
@@ -48,62 +47,37 @@
                 <a href="/posts?genre=fantasi"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
         {{ request('genre') == 'fantasi' ? 'bg-purple-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
                     Fantasi
-
                 </a>
 
                 <a href="/posts?genre=misteri"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
         {{ request('genre') == 'misteri' ? 'bg-blue-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
                     Misteri
-
                 </a>
 
                 <a href="/posts?genre=drama"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
-            {{ request('genre') == 'drama' ? 'bg-yellow-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
+        {{ request('genre') == 'drama' ? 'bg-yellow-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
                     Drama
-
                 </a>
-                <a href="/posts?genre=action"
+
+                <a href="/posts?genre=aksi"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
-            {{ request('genre') == 'action' ? 'bg-yellow-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
-                    Action
-
+        {{ request('genre') == 'aksi' ? 'bg-orange-600 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
+                    Aksi
                 </a>
-                <a href="/posts?genre=comedy"
+
+                <a href="/posts?genre=komedi"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
-            {{ request('genre') == 'comedy' ? 'bg-yellow-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
-                    Comedy
-
+        {{ request('genre') == 'komedi' ? 'bg-green-600 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
+                    Komedi
                 </a>
-                <a href="/posts?genre=sci-fi"
-                    class="px-4 py-2 rounded-full text-sm font-medium transition
-            {{ request('genre') == 'sci-fi' ? 'bg-yellow-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
 
-                    Sci-fi
-
-                </a>
                 <a href="/posts?genre=thriller"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
-            {{ request('genre') == 'thriller' ? 'bg-yellow-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
-                    Thriler
-
-                </a>
-                <a href="/posts?genre=slice of life"
-                    class="px-4 py-2 rounded-full text-sm font-medium transition
-            {{ request('genre') == 'slice of life'
-                ? 'bg-yellow-500 text-white'
-                : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
-
-                    Slice of Life
-
+        {{ request('genre') == 'thriller' ? 'bg-red-700 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
+                    Thriller
                 </a>
 
             </div>

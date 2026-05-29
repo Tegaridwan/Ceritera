@@ -16,13 +16,16 @@ class PostController extends Controller
      */
     public function index()
     {
+        $query = Post::query()->where('status', 'publik');
 
-        $query = Post::query();
         if (request('genre')) {
-            $query->where('genre', request('genre'));
+
+            $genreInput = ucfirst(request('genre'));
+
+            $query->whereJsonContains('genre', $genreInput);
         }
+
         $posts = $query->latest()->get();
-        // $posts = Post::where('user_id', Auth::id())->get();
         return view('posts.index', compact('posts'));
     }
 
