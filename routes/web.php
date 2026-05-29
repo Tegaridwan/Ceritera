@@ -64,6 +64,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/admin/posts/{id}/read', [AdminController::class, 'read'])
             ->name('admin.posts.read');
+
+        Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])
+            ->name('admin.users.destroy');
+
+        Route::delete('/admin/posts/{post}', [AdminController::class, 'destroy'])
+            ->name('admin.posts.destroy');
     });
 
     /*

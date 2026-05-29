@@ -8,11 +8,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-gradient-to-b from-[#C4B5FD] from-[16%] to-[#DDD6FE] to-[92%] bg-fixed bg-no-repeat flex flex-col">
+<body
+    class="min-h-screen bg-gradient-to-b from-[#C4B5FD] from-[16%] to-[#DDD6FE] to-[92%] bg-fixed bg-no-repeat flex flex-col">
     <div class="bg-[#402988] px-5 py-4 flex items-center gap-3 shadow-md">
 
-        <span
-            onclick="window.location.href='{{ route('posts.index') }}';"
+        <span onclick="window.location.href='{{ route('posts.index') }}';"
             class="text-[15px] text-[#90b8cc] font-medium cursor-pointer hover:text-white transition">
             ← Beranda
         </span>
@@ -23,19 +23,17 @@
             Ceritamu
         </span>
     </div>
-    <div class="max-w-2xl mx-auto mt-8 bg-white rounded-3xl shadow-xl p-10 text-center transition-all duration-300 hover:shadow-2xl">
+    <div
+        class="max-w-2xl mx-auto mt-8 bg-white rounded-3xl shadow-xl p-10 text-center transition-all duration-300 hover:shadow-2xl">
 
         <!-- ICON -->
         <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-[#C4B5FD] flex items-center justify-center">
 
-            <button onclick="window.location.href='{{ route('posts.create') }}';" class="w-full h-full flex items-center justify-center rounded-full hover:bg-[#402988] transition-colors duration-200">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.8"
-                    stroke="currentColor"
-                    class="w-10 h-10 text-[#402988]">
-                    <path stroke-linecap="round"
-                        stroke-linejoin="round"
+            <button onclick="window.location.href='{{ route('posts.create') }}';"
+                class="w-full h-full flex items-center justify-center rounded-full hover:bg-[#402988] transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                    stroke="currentColor" class="w-10 h-10 text-[#402988]">
+                    <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
             </button>
@@ -48,28 +46,31 @@
     <div class="mx-12 mt-8 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4">
 
         @foreach ($posts as $post)
-
-        <a href="/posts/{{ $post->id }}/edit" class="group block">
-            <div class="relative aspect-[2/3] overflow-hidden rounded-lg bg-gray-200 shadow-sm">
-                <div class="absolute top-2 left-2 z-10">
-                    @if ($post->is_draft)
-                    <span class="bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
-                        Draft
-                    </span>
-                    @else
-                    <span class="bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
-                        Publish
-                    </span>
-                    @endif
+            <a href="/posts/{{ $post->id }}/edit" class="group block">
+                <div class="relative aspect-[2/3] overflow-hidden rounded-lg bg-gray-200 shadow-sm">
+                    <div class="absolute top-2 left-2 z-10">
+                        @if ($post->is_draft)
+                            <span class="bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
+                                Draft
+                            </span>
+                        @else
+                            <span class="bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
+                                Publish
+                            </span>
+                        @endif
+                    </div>
+                    <img src="{{ $post->cover ? asset('storage/' . $post->cover) : asset('images/default-cover.jpg') }}"
+                        alt="{{ $post->title }}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
-                <img src="{{ asset('images/' . $post->cover) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-            </div>
-            <div class="mt-2">
-                <h2 class="text-sm font-semibold text-gray-800 line-clamp-2 leading-snug group-hover:text-[#8B5CF6] transition">{{ $post->title }}</h2>
-                <p class="mt-1 text-xs text-gray-500 truncate">{{ $post->user->name }}</p>
-            </div>
+                <div class="mt-2">
+                    <h2
+                        class="text-sm font-semibold text-gray-800 line-clamp-2 leading-snug group-hover:text-[#8B5CF6] transition">
+                        {{ $post->title }}</h2>
+                    <p class="mt-1 text-xs text-gray-500 truncate">{{ $post->user->name }}</p>
+                </div>
 
-        </a>
+            </a>
         @endforeach
     </div>
 </body>
