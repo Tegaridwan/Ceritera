@@ -21,14 +21,14 @@
             <!-- Actions and Settings -->
             <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
                 <!-- Search Box -->
-                <div class="relative">
-                    <input type="text" placeholder="Cari..." class="rounded-full bg-white border-none text-black placeholder-[#7a9bb0] focus:ring-2 focus:ring-[#cce4f0] px-4 py-2 text-sm w-48 lg:w-64 transition-all">
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-[#7a9bb0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <form action="{{ route('dashboard') }}" method="GET" class="relative">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari..." class="rounded-full bg-white border-none text-black placeholder-[#7a9bb0] focus:ring-2 focus:ring-[#cce4f0] px-4 py-2 text-sm w-48 lg:w-64 transition-all">
+                    <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                        <svg class="w-4 h-4 text-[#7a9bb0] hover:text-[#4a9aba] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
-                    </div>
-                </div>
+                    </button>
+                </form>
 
                 <!-- Tulis Ceritamu Button -->
                 <x-dropdown align="right" width="48">

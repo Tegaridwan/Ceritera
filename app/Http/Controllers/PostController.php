@@ -25,6 +25,16 @@ class PostController extends Controller
             $query->whereJsonContains('genre', $genreInput);
         }
 
+        if (request('search')) {
+            $search = request('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%')
+                  ->orWhereHas('user', function ($userQuery) use ($search) {
+                      $userQuery->where('name', 'like', '%' . $search . '%');
+                  });
+            });
+        }
+
         $posts = $query->latest()->get();
         return view('posts.index', compact('posts'));
     }
