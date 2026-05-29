@@ -22,7 +22,7 @@
 
         <!-- BUTTON HAPUS -->
         <form
-            action=""
+            action="{{ route('admin.posts.destroy', $post->id) }}"
             method="POST"
             onsubmit="return confirm('Hapus cerita ini?')">
             @csrf
@@ -39,7 +39,7 @@
         <div class="bg-white rounded-3xl shadow p-8 mb-6">
             <div class="flex gap-6">
                 <img
-                    src="{{ asset('images/' . $post->cover) }}"
+                    src="{{ $post->cover ? asset('storage/' . $post->cover) : asset('images/default-cover.jpg') }}"
                     class="w-40 h-56 object-cover rounded-2xl">
                 <div class="flex-1">
                     <h1 class="text-4xl font-bold text-[#1A0A3C] mb-3">
@@ -53,7 +53,7 @@
                     <span
                         class="inline-block bg-[#4B2CA0]
                         text-white text-sm px-4 py-1 rounded-full mb-2">
-                        {{ $post->genre }}
+                        {{ implode(', ', $post->genre ?? []) }}
                     </span>
                     <p class="text-gray-700 leading-7">
                         {{ $post->sinopsis }}
