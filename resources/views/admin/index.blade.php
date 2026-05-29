@@ -167,7 +167,7 @@
                                             {{ $post->title }}
                                         </p>
                                         <p class="text-[#C4B5FD] text-[11px]">
-                                            oleh: {{ $post->user->name }} · {{ $post->genre }}
+                                            oleh: {{ $post->user->name }} · {{ $post->genres }}
                                         </p>
                                     </div>
                                 </div>
