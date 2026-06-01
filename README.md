@@ -1,6 +1,6 @@
 # 📖 Ceritara
 
-[Nama Proyek Anda] adalah platform berbasis web untuk membaca, menulis, dan mengelola cerita. Dibangun menggunakan framework Laravel modern, aplikasi ini menawarkan pengalaman yang nyaman bagi para penulis dan pembaca dengan antarmuka yang responsif dan sistem manajemen konten yang lengkap.
+Ceritara adalah platform berbasis web untuk membaca, menulis, dan mengelola cerita. Dibangun menggunakan framework Laravel modern, aplikasi ini menawarkan pengalaman yang nyaman bagi para penulis dan pembaca dengan antarmuka yang responsif dan sistem manajemen konten yang lengkap.
 
 ---
 
@@ -8,7 +8,6 @@
 
 * **Framework:** Laravel (PHP)
 * **Database:** MySQL
-* **ORM:** Eloquent ORM
 * **Frontend:** Tailwind CSS, JavaScript
 
 ---
