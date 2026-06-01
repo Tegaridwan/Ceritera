@@ -59,15 +59,6 @@
 
 ---
 
-## 📸 Tangkapan Layar (Screenshots)
-
-*(Ganti teks di bawah dengan link gambar asli aplikasi Anda)*
-* `![Beranda](link-gambar-beranda)`
-* `![Halaman Baca](link-gambar-baca)`
-* `![Dashboard Admin](link-gambar-admin)`
-
----
-
 ## 📄 Lisensi
 
 Proyek ini bersifat *Open-Source* dan dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
