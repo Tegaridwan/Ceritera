@@ -1,58 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📖 Ceritara
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Ceritara adalah platform berbasis web untuk membaca, menulis, dan mengelola cerita. Dibangun menggunakan framework Laravel modern, aplikasi ini menawarkan pengalaman yang nyaman bagi para penulis dan pembaca dengan antarmuka yang responsif dan sistem manajemen konten yang lengkap.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Teknologi yang Digunakan
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Framework:** Laravel (PHP)
+* **Database:** MySQL
+* **Frontend:** Tailwind CSS, JavaScript
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 👤 Manajemen Pengguna
+* **Registrasi & Login:** Sistem pembuatan akun, login, dan logout.
+* **Autentikasi Aman:** Menggunakan sistem Laravel Authentication bawaan.
+* **Sistem Role:** Pembagian hak akses yang jelas antara **Admin** dan **User**.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📖 Manajemen Cerita
+* **Buat Cerita:** Menulis dan membuat cerita baru.
+* **Manajemen Karya:** Mengedit informasi cerita dan menghapus cerita.
+* **Media:** Fitur untuk menambahkan dan menampilkan *cover* (sampul) cerita.
+* **Daftar Karya:** Menampilkan daftar seluruh cerita yang telah dipublikasikan.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 📝 Manajemen Chapter
+* **Manajemen Konten:** Menambahkan chapter baru ke dalam cerita dan mengedit isinya.
+* **Hapus Chapter:** Fitur untuk menghapus chapter.
+* **Daftar Terstruktur:** Menampilkan daftar chapter yang terorganisir berdasarkan cerita.
 
-## Agentic Development
+### 📚 Membaca Cerita
+* **Pengalaman Membaca:** Membaca cerita secara lengkap (menampilkan judul dan isi).
+* **Navigasi Chapter:** Berpindah antar chapter dengan mudah dan nyaman.
+* **Daftar Isi Cepat:** Pemilihan chapter yang dapat diakses langsung oleh pembaca.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 🔍 Eksplorasi Cerita
+* **Katalog Cerita:** Menampilkan daftar cerita terbaru.
+* **Informasi Detail:** Menampilkan informasi penulis, genre, dan sinopsis cerita sebelum mulai membaca.
 
-```bash
-composer require laravel/boost --dev
+### 📊 Dashboard Admin
+* **Statistik Cepat:** Melihat jumlah total pengguna dan total cerita di platform.
+* **Kelola Pengguna:** Akses untuk mengelola seluruh data pengguna yang terdaftar.
+* **Kelola Konten:** Mengelola dan memantau seluruh cerita yang tersedia di sistem (termasuk membaca cerita dari panel admin).
+* **Moderasi:** Menghapus cerita yang melanggar aturan komunitas/platform.
 
-php artisan boost:install
-```
+### 🛡️ Keamanan Sistem
+* **Akses Terbatas:** Middleware untuk autentikasi pengguna dan pembatasan akses halaman admin.
+* **Proteksi Serangan:** Keamanan form menggunakan proteksi CSRF bawaan Laravel.
+* **Validasi Input:** Validasi data yang ketat pada setiap form input.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 🎨 Antarmuka & Pengelolaan Konten
+* **Desain Responsif:** Tampilan modern yang menyesuaikan berbagai ukuran layar menggunakan Tailwind CSS.
+* **UI/UX:** Dashboard yang navigasinya mudah dipahami dan halaman baca yang berfokus penuh pada konten.
+* **Manajemen File:** Penyimpanan terstruktur untuk *cover* cerita.
+* **Struktur Database:** Relasi yang solid antara tabel pengguna, cerita, dan chapter menggunakan Eloquent ORM.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📄 Lisensi
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proyek ini bersifat *Open-Source* dan dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
