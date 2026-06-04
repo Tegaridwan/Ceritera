@@ -11,7 +11,7 @@
 
         <div class="grid md:grid-cols-3 gap-10">
             <!-- COVER -->
-            <div>
+            <div class="aspect-[2/3] overflow-hidden rounded-lg bg-gray-200 shadow-sm"  >
                 <img src="{{ $post->cover ? asset('storage/' . $post->cover) : asset('images/default-cover.jpg') }}"
                     alt="{{ $post->title }}"
                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
@@ -20,7 +20,7 @@
             <div class="md:col-span-2">
                 <div>
                     <p class="text-sm text-[#3a8fba] font-semibold mb-2">
-                        {{ $post->genres }}
+                        {{ $post->genre ? implode(', ', $post->genre) : '-' }}
                     </p>
                 </div>
 

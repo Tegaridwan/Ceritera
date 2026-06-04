@@ -31,16 +31,15 @@
                     Semua
                 </a>
 
-                <!-- Perbaikan: ?genres= diubah menjadi ?genre= -->
                 <a href="/posts?genre=romance"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
         {{ request('genre') == 'romance' ? 'bg-pink-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
                     Romance
                 </a>
 
-                <a href="/posts?genre=horror"
+                <a href="/posts?genre=horor"
                     class="px-4 py-2 rounded-full text-sm font-medium transition
-        {{ request('genre') == 'horror' ? 'bg-red-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
+        {{ request('genre') == 'horor' ? 'bg-red-500 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700' }}">
                     Horor
                 </a>
 
