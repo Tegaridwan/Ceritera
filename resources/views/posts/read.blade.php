@@ -67,12 +67,14 @@
     <div id="reader"
       class="mx-auto flex max-w-[520px] flex-1 flex-col">
 
+      <!-- STICKY HEADER -->
+      <div class="sticky top-0 z-40 flex flex-col shadow-md">
       <!-- TOPBAR -->
-      <div class="sticky top-0 z-40 border-b-2 border-[#3a8fba] bg-[#402988]">
+      <div class="border-b-2 border-[#3a8fba] bg-[#402988]">
 
         <div
           onclick="window.location.href='{{ route('posts.show', $post->id) }}';"
-          class="cursor-pointer border-b border-[#2a2a44] px-5 py-3 text-[15px] font-bold text-white">
+          class="cursor-pointer border-b border-[#2a2a44] px-5 py-3 text-[15px] font-bold text-white transition hover:bg-[rgba(255,255,255,0.1)]">
           ← Kembali
         </div>
 
@@ -82,7 +84,7 @@
             class="flex h-[56px] w-[44px] flex-shrink-0 items-center justify-center overflow-hidden rounded-[6px] bg-[#5c77c9] text-[20px]">
 
             <img
-              src="{{ asset('images/' . $post->cover) }}"
+              src="{{ $post->cover ? asset('storage/' . $post->cover) : asset('images/default-cover.jpg') }}"
               alt="Cover"
               class="h-full w-full rounded-[6px] object-cover">
           </div>
@@ -142,6 +144,7 @@
           ☰ Chapter
         </button>
       </div>
+      </div>
 
       <!-- CONTENT -->
       <div id="content-area"
@@ -152,7 +155,7 @@
           {{ $chapter->title }}
         </div>
 
-        <div class="text-[15px] font-light leading-[1.95]">
+        <div id="story-body" class="text-[15px] font-light leading-[1.95] transition-all duration-300">
 
           <p class="mb-5">
             {{ $chapter->content }}
@@ -216,41 +219,7 @@
   </div>
 
   <script>
-    const episodes = [{
-      title: "Pintu di Ujung Lorong",
-      content: `<p>Raya menyeret koper terakhirnya melewati ambang pintu apartemen 4B.</p>`
-    }];
-
-    let currentEp = 0;
     let darkMode = false;
-
-    function loadEp(idx) {
-      currentEp = idx;
-
-      document.getElementById('story-body').innerHTML = episodes[idx].content;
-
-      document.getElementById('progress-fill').style.width =
-        ((idx + 1) / episodes.length * 100) + '%';
-
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-
-    function nextEp() {
-      if (currentEp < episodes.length - 1)
-        loadEp(currentEp + 1);
-      else
-        toast('🎉 Ini adalah episode terakhir!');
-    }
-
-    function prevEp() {
-      if (currentEp > 0)
-        loadEp(currentEp - 1);
-      else
-        toast('⚠️ Ini adalah episode pertama!');
-    }
 
     function toggleDark() {
       darkMode = !darkMode;
@@ -315,8 +284,6 @@
         el.classList.add('translate-y-[80px]');
       }, 2500);
     }
-
-    loadEp(0);
 
     function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
