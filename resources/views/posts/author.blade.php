@@ -30,7 +30,7 @@
             <a href="{{ route('posts.show', $post->id) }}" class="group">
                 <div class="aspect-[2/3] overflow-hidden rounded-xl shadow">
                     <img
-                        src="{{ asset('images/' . $post->cover) }}"
+                        src="{{ $post->cover ? asset('storage/' . $post->cover) : asset('images/default-cover.jpg') }}"
                         class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
                 <h3 class="mt-2 text-sm font-semibold line-clamp-2">
