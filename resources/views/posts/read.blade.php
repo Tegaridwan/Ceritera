@@ -169,7 +169,7 @@
         class="border-t border-[#d0dce8] bg-[#f0f4f8]">
 
         <!-- REACTION -->
-        <div
+        <!-- <div
           class="flex items-center justify-center gap-5 border-b border-[#d0dce8] px-5 py-[14px]">
 
           <button
@@ -179,7 +179,7 @@
             <span class="text-[16px]">＜</span>
             <span>Bagikan</span>
           </button>
-        </div>
+        </div> -->
 
         <!-- NAV -->
         <div class="flex gap-3 border-b border-[#d0dce8] px-5 py-[14px]">

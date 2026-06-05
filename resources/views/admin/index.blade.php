@@ -159,7 +159,7 @@
                                 data-post='@json($post->load('user', 'chapters'))' onclick="lihatDetailCerita(this.dataset.post)">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-10 rounded overflow-hidden flex-shrink-0">
-                                        <img src="{{ asset('images/' . $post->cover) }}"
+                                        <img src="{{ $post->cover ? asset('storage/' . $post->cover) : asset('images/default-cover.jpg') }}"
                                             class="w-full h-full object-cover">
                                     </div>
                                     <div>

@@ -18,6 +18,7 @@ class PostController extends Controller
     {
         $query = Post::query()->where('status', 'publik');
 
+        //cari berdasarkan genre
         if (request('genre')) {
 
             $genreInput = ucfirst(request('genre'));
@@ -34,7 +35,8 @@ class PostController extends Controller
                   });
             });
         }
-
+        
+        //kirim ke index
         $posts = $query->latest()->get();
         return view('posts.index', compact('posts'));
     }
@@ -132,10 +134,12 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
+    // tampilkan chapter 
     public function read(Post $post, Chapter $chapter = null)
     {
         $chapters = $post->chapters;
 
+        //jika tidak ada chapter spesifik maka tampilkan chapter 1
         if (!$chapter || !$chapter->exists) {
             $chapter = $chapters->first();
         }

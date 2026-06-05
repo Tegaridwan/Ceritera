@@ -140,19 +140,7 @@
                                 @checked(in_array($genre, old('genre', $oldGenres)))>
 
                             <div
-                                class="px-5 py-2 rounded-full border border-[#7c6ac9]
-          text-[#7c6ac9]
-          text-[14px]
-          font-medium
-          cursor-pointer
-          transition-all
-          duration-200
-          hover:border-[#9E7AE2]
-          hover:text-white
-          hover:bg-[#9E7AE2]
-          peer-checked:bg-[#9E7AE2]
-          peer-checked:border-[#9E7AE2]
-          peer-checked:text-white">
+                                class="px-5 py-2 rounded-full border border-[#7c6ac9] text-[#7c6ac9] text-[14px] font-medium cursor-pointer transition-all duration-200 hover:border-[#9E7AE2] hover:text-whitehover:bg-[#9E7AE2] peer-checked:bg-[#9E7AE2]peer-checked:border-[#9E7AE2] peer-checked:text-white">
                                 {{ $genre }}
                             </div>
                         </label>
